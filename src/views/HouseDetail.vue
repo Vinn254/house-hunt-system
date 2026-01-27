@@ -299,11 +299,6 @@ const minDate = computed(() => {
 onMounted(async () => {
   const houseId = route.params.id;
 
-  // For development, use mock data directly
-  house.value = getMockHouse(houseId);
-  loading.value = false;
-
-  /*
   try {
     const houseDoc = await getDoc(doc(db, 'houses', houseId));
     if (houseDoc.exists()) {
@@ -311,12 +306,11 @@ onMounted(async () => {
     }
   } catch (error) {
     console.error('Error fetching house:', error);
-    // Use mock data for development
+    // Use mock data as fallback
     house.value = getMockHouse(houseId);
   } finally {
     loading.value = false;
   }
-  */
 });
 
 const nextImage = () => {

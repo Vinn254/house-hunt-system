@@ -506,36 +506,47 @@
               ></textarea>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">Rent (KSh) *</label>
-                <input
-                  v-model="newHouse.rent"
-                  type="number"
-                  required
-                  class="input-field"
-                  placeholder="25000"
-                />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">Bedrooms</label>
-                <input
-                  v-model="newHouse.bedrooms"
-                  type="number"
-                  class="input-field"
-                  placeholder="2"
-                />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">Bathrooms</label>
-                <input
-                  v-model="newHouse.bathrooms"
-                  type="number"
-                  class="input-field"
-                  placeholder="1"
-                />
-              </div>
-            </div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+               <div>
+                 <label class="block text-sm font-medium text-gray-700 mb-2">House Type *</label>
+                 <select v-model="newHouse.houseType" required class="input-field">
+                   <option value="">Select Type</option>
+                   <option value="Single Room">Single Room</option>
+                   <option value="Bedsitter">Bedsitter</option>
+                   <option value="1 Bedroom">1 Bedroom</option>
+                   <option value="2 Bedroom">2 Bedroom</option>
+                   <option value="3 Bedroom">3 Bedroom</option>
+                 </select>
+               </div>
+               <div>
+                 <label class="block text-sm font-medium text-gray-700 mb-2">Rent (KSh) *</label>
+                 <input
+                   v-model="newHouse.rent"
+                   type="number"
+                   required
+                   class="input-field"
+                   placeholder="25000"
+                 />
+               </div>
+               <div>
+                 <label class="block text-sm font-medium text-gray-700 mb-2">Bedrooms</label>
+                 <input
+                   v-model="newHouse.bedrooms"
+                   type="number"
+                   class="input-field"
+                   placeholder="2"
+                 />
+               </div>
+               <div>
+                 <label class="block text-sm font-medium text-gray-700 mb-2">Bathrooms</label>
+                 <input
+                   v-model="newHouse.bathrooms"
+                   type="number"
+                   class="input-field"
+                   placeholder="1"
+                 />
+               </div>
+             </div>
 
             <div>
               <label class="block text-sm font-medium text-gray-700 mb-2">Amenities</label>
@@ -564,7 +575,7 @@
                 @change="handleImageSelection"
                 class="input-field"
               />
-              <p class="text-xs text-gray-600 mt-1">Select multiple images (max 10). Files will be uploaded to Firebase Storage.</p>
+              <p class="text-xs text-gray-600 mt-1">Select multiple images (max 10). Files will be uploaded to Cloudinary.</p>
               <div v-if="selectedImageFiles.length > 0" class="mt-2">
                 <p class="text-sm text-green-600">{{ selectedImageFiles.length }} image(s) selected</p>
               </div>
@@ -610,8 +621,7 @@
 <script setup>
 import { ref, computed, onMounted, watch, nextTick } from 'vue';
 import { collection, onSnapshot, doc, updateDoc, addDoc, setDoc, deleteDoc, query, orderBy, where, serverTimestamp } from 'firebase/firestore';
-import { uploadBytes, getDownloadURL, ref as storageRef } from 'firebase/storage';
-import { db, storage } from '../firebase/config';
+import { db } from '../firebase/config';
 import { useAuth } from '../composables/useAuth';
 import { useRouter } from 'vue-router';
 
@@ -640,6 +650,7 @@ const newHouse = ref({
   title: '',
   description: '',
   location: '',
+  houseType: '',
   rent: '',
   bedrooms: '',
   bathrooms: '',
@@ -909,12 +920,27 @@ const handleVideoSelection = (event) => {
   houseVideo.value = file;
 };
 
-const uploadFile = async (file, path) => {
+const uploadFile = async (file, folder = 'houses') => {
   try {
-    const fileRef = storageRef(storage, path);
-    const snapshot = await uploadBytes(fileRef, file);
-    const url = await getDownloadURL(snapshot.ref);
-    return url;
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET);
+    formData.append('folder', folder);
+
+    const response = await fetch(
+      `https://api.cloudinary.com/v1_1/${import.meta.env.VITE_CLOUDINARY_CLOUD_NAME}/${file.type.startsWith('video/') ? 'video' : 'image'}/upload`,
+      {
+        method: 'POST',
+        body: formData,
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`Upload failed: ${response.statusText}`);
+    }
+
+    const result = await response.json();
+    return result.secure_url;
   } catch (error) {
     console.error(`Error uploading file ${file.name}:`, error);
     throw error;
@@ -927,6 +953,7 @@ const editHouse = (house) => {
     title: house.title,
     description: house.description || '',
     location: house.location,
+    houseType: house.houseType || '',
     rent: house.rent.toString(),
     bedrooms: house.bedrooms ? house.bedrooms.toString() : '',
     bathrooms: house.bathrooms ? house.bathrooms.toString() : '',
@@ -966,8 +993,8 @@ const updateHouseStatus = async (houseId, newStatus) => {
 };
 
 const addHouse = async () => {
-  if (!newHouse.value.title || !newHouse.value.location || !newHouse.value.rent) {
-    alert('Please fill in all required fields (title, location, rent)');
+  if (!newHouse.value.title || !newHouse.value.location || !newHouse.value.houseType || !newHouse.value.rent) {
+    alert('Please fill in all required fields (title, location, house type, rent)');
     return;
   }
 
@@ -985,15 +1012,14 @@ const addHouse = async () => {
     if (houseImages.value.length > 0) {
       for (let i = 0; i < houseImages.value.length; i++) {
         const image = houseImages.value[i];
-        const path = `houses/${Date.now()}_${i}_${image.name}`;
         console.log(`Uploading image ${i + 1}/${houseImages.value.length}: ${image.name}`);
         try {
-          const url = await uploadFile(image, path);
+          const url = await uploadFile(image, 'houses');
           imageUrls.push(url);
           console.log(`✓ Image ${i + 1} uploaded successfully`);
         } catch (error) {
           console.error(`✗ Upload failed for ${image.name}:`, error);
-          alert(`Failed to upload image: ${image.name}. Please check your internet connection and Firebase Storage permissions.`);
+          alert(`Failed to upload image: ${image.name}. Please check your internet connection and Cloudinary configuration.`);
           uploading.value = false;
           return;
         }
@@ -1004,14 +1030,13 @@ const addHouse = async () => {
     // Upload video if provided
     let videoUrl = null;
     if (houseVideo.value) {
-      const path = `houses/${Date.now()}_video_${houseVideo.value.name}`;
       console.log('Uploading video:', houseVideo.value.name);
       try {
-        videoUrl = await uploadFile(houseVideo.value, path);
+        videoUrl = await uploadFile(houseVideo.value, 'houses');
         console.log('✓ Video uploaded successfully');
       } catch (error) {
         console.error('✗ Video upload failed:', error);
-        alert(`Failed to upload video: ${houseVideo.value.name}. Please check your internet connection and Firebase Storage permissions.`);
+        alert(`Failed to upload video: ${houseVideo.value.name}. Please check your internet connection and Cloudinary configuration.`);
         uploading.value = false;
         return;
       }
@@ -1048,6 +1073,7 @@ const addHouse = async () => {
       title: '',
       description: '',
       location: '',
+      houseType: '',
       rent: '',
       bedrooms: '',
       bathrooms: '',

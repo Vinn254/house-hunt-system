@@ -245,15 +245,9 @@ const filteredHouses = computed(() => {
 
 // Fetch houses from Firebase
 onMounted(() => {
-  // For development, use mock data directly
-  houses.value = getMockHouses();
-  loading.value = false;
-
-  /*
   const housesQuery = query(
     collection(db, 'houses'),
-    where('status', '==', 'Available'),
-    where('verified', '==', true)
+    where('status', '==', 'Available')
   );
 
   onSnapshot(housesQuery, (snapshot) => {
@@ -265,10 +259,9 @@ onMounted(() => {
   }, (error) => {
     console.error('Error fetching houses:', error);
     loading.value = false;
-    // Use mock data for development
+    // Use mock data as fallback
     houses.value = getMockHouses();
   });
-  */
 });
 
 const viewHouse = (houseId) => {

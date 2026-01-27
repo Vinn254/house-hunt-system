@@ -1,5 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import { auth } from '../firebase/config';
+import { onAuthStateChanged } from 'firebase/auth';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../firebase/config';
 
 const routes = [
   {
@@ -70,12 +73,34 @@ const router = createRouter({
   }
 });
 
-// Navigation guard
-router.beforeEach((to, from, next) => {
-  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
-  const currentUser = auth.currentUser;
+// Auth state promise
+let authStateResolved = false;
+let currentUser = null;
 
-  if (requiresAuth && !currentUser) {
+const getAuthState = () => {
+  return new Promise((resolve) => {
+    if (authStateResolved) {
+      resolve(currentUser);
+      return;
+    }
+
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      currentUser = user;
+      authStateResolved = true;
+      unsubscribe();
+      resolve(user);
+    });
+  });
+};
+
+// Navigation guard
+router.beforeEach(async (to, from, next) => {
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+
+  // Wait for auth state to be determined
+  const user = await getAuthState();
+
+  if (requiresAuth && !user) {
     // Store the intended destination
     sessionStorage.setItem('redirectAfterLogin', to.fullPath);
     next('/login');
