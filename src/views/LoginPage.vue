@@ -155,19 +155,22 @@ const handleEmailLogin = async () => {
 };
 
 const handleEmailRegister = async () => {
-  loading.value = true;
-  error.value = '';
-  success.value = '';
+    loading.value = true;
+    error.value = '';
+    success.value = '';
 
-  const result = await registerWithEmail(email.value, password.value);
+    const result = await registerWithEmail(email.value, password.value);
 
-  if (result.success) {
-    success.value = result.message;
-    // Don't redirect, let them check email
-  } else {
-    error.value = result.error;
-  }
+    if (result.success) {
+      success.value = result.message;
+      // Auto-login after registration
+      const redirectPath = sessionStorage.getItem('redirectAfterLogin') || '/dashboard';
+      sessionStorage.removeItem('redirectAfterLogin');
+      router.push(redirectPath);
+    } else {
+      error.value = result.error;
+    }
 
-  loading.value = false;
-};
+    loading.value = false;
+  };
 </script>

@@ -34,16 +34,29 @@ export function useAuth() {
     if (unsubscribe) unsubscribe();
   });
 
-  const loginWithGoogle = async () => {
-    try {
-      const provider = new GoogleAuthProvider();
-      const result = await signInWithPopup(auth, provider);
-      await createProfileIfNeeded(result.user);
-      return { success: true, user: result.user };
-    } catch (error) {
-      return { success: false, error: error.message };
-    }
-  };
+   const loginWithGoogle = async () => {
+     try {
+       const provider = new GoogleAuthProvider();
+       const result = await signInWithPopup(auth, provider);
+       await createProfileIfNeeded(result.user);
+       return { success: true, user: result.user };
+     } catch (error) {
+       // Map common Firebase auth errors to user-friendly messages
+       let friendlyError = error.message;
+       if (error.code === 'auth/popup-closed-by-user') {
+         friendlyError = 'Sign-in window was closed. Please try again.';
+       } else if (error.code === 'auth/cancelled-popup-request') {
+         friendlyError = 'Sign-in request was cancelled. Please try again.';
+       } else if (error.code === 'auth/operation-not-allowed') {
+         friendlyError = 'Google sign-in is not enabled. Please contact support.';
+       } else if (error.code === 'auth/unauthorized-domain') {
+         friendlyError = 'This domain is not authorized for Google sign-in. Please contact support.';
+       } else if (error.code === 'auth/invalid-credential') {
+         friendlyError = 'Invalid Google credentials. Please try again.';
+       }
+       return { success: false, error: friendlyError };
+     }
+   };
 
 
   const fetchProfile = async (uid) => {
@@ -97,15 +110,28 @@ export function useAuth() {
     }
   };
 
-  const loginWithEmail = async (email, password) => {
-    try {
-      const result = await signInWithEmailAndPassword(auth, email, password);
-      await createProfileIfNeeded(result.user);
-      return { success: true, user: result.user };
-    } catch (error) {
-      return { success: false, error: error.message };
-    }
-  };
+   const loginWithEmail = async (email, password) => {
+     try {
+       const result = await signInWithEmailAndPassword(auth, email, password);
+       await createProfileIfNeeded(result.user);
+       return { success: true, user: result.user };
+     } catch (error) {
+       // Map common Firebase auth errors to user-friendly messages
+       let friendlyError = error.message;
+       if (error.code === 'auth/user-not-found') {
+         friendlyError = 'No account found with this email. Please check your email or sign up.';
+       } else if (error.code === 'auth/wrong-password') {
+         friendlyError = 'Incorrect password. Please try again or reset your password.';
+       } else if (error.code === 'auth/invalid-email') {
+         friendlyError = 'Invalid email address. Please check your email.';
+       } else if (error.code === 'auth/user-disabled') {
+         friendlyError = 'This account has been disabled. Please contact support.';
+       } else if (error.code === 'auth/too-many-requests') {
+         friendlyError = 'Too many failed attempts. Please try again later.';
+       }
+       return { success: false, error: friendlyError };
+     }
+   };
 
   const resendVerificationEmail = async () => {
     try {
