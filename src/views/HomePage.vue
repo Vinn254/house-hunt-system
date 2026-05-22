@@ -107,12 +107,13 @@
           class="card hover:shadow-xl transition-shadow duration-300 cursor-pointer"
           @click="viewHouse(house.id)"
         >
-          <div class="relative h-48 overflow-hidden">
-            <img 
-              :src="house.images[0] || '/placeholder-house.jpg'" 
-              :alt="house.title"
-              class="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-            />
+           <div class="relative h-48 overflow-hidden">
+             <img 
+               :src="house.images[0] || '/placeholder-house.jpg'" 
+               :alt="house.title"
+               class="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+               loading="lazy"
+             />
             <div class="absolute top-2 right-2 bg-primary-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
               KSh {{ house.rent.toLocaleString() }}/mo
             </div>

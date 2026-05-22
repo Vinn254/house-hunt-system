@@ -21,43 +21,45 @@
       <div v-else-if="house" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <!-- Main Content -->
         <div class="lg:col-span-2">
-          <!-- Image Gallery -->
-          <div class="card mb-6">
-            <div class="relative h-96 overflow-hidden">
-              <img 
-                :src="house.images[currentImageIndex]" 
-                :alt="house.title"
-                class="w-full h-full object-cover"
-              />
-              <button 
-                v-if="house.images.length > 1"
-                @click="previousImage"
-                class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full"
-              >
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                </svg>
-              </button>
-              <button 
-                v-if="house.images.length > 1"
-                @click="nextImage"
-                class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full"
-              >
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                </svg>
-              </button>
-            </div>
-            <div v-if="house.images.length > 1" class="flex gap-2 p-4 overflow-x-auto">
-              <img 
-                v-for="(image, index) in house.images" 
-                :key="index"
-                :src="image"
-                @click="currentImageIndex = index"
-                class="w-20 h-20 object-cover rounded cursor-pointer border-2"
-                :class="currentImageIndex === index ? 'border-primary-600' : 'border-transparent'"
-              />
-            </div>
+           <!-- Image Gallery -->
+           <div class="card mb-6">
+             <div class="relative h-96 overflow-hidden">
+               <img 
+                 :src="house.images[currentImageIndex]" 
+                 :alt="house.title"
+                 class="w-full h-full object-cover"
+                 loading="lazy"
+               />
+               <button 
+                 v-if="house.images.length > 1"
+                 @click="previousImage"
+                 class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full"
+               >
+                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                 </svg>
+               </button>
+               <button 
+                 v-if="house.images.length > 1"
+                 @click="nextImage"
+                 class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full"
+               >
+                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                 </svg>
+               </button>
+             </div>
+             <div v-if="house.images.length > 1" class="flex gap-2 p-4 overflow-x-auto">
+               <img 
+                 v-for="(image, index) in house.images" 
+                 :key="index"
+                 :src="image"
+                 @click="currentImageIndex = index"
+                 class="w-20 h-20 object-cover rounded cursor-pointer border-2"
+                 :class="currentImageIndex === index ? 'border-primary-600' : 'border-transparent'"
+                 loading="lazy"
+               />
+             </div>
           </div>
 
           <!-- House Details -->
