@@ -167,18 +167,18 @@
               <h3 class="text-lg font-semibold text-gray-900 mb-2">{{ house.title }}</h3>
               <p class="text-sm text-gray-600 mb-2">{{ house.location }}</p>
               <p class="text-lg font-bold text-primary-600 mb-4">KSh {{ house.rent.toLocaleString() }}/mo</p>
-              <div class="mb-3">
-                <label class="block text-xs text-gray-500 mb-1">Status</label>
-                <select
-                  @change="updateHouseStatus(house.id, $event.target.value)"
-                  :value="house.status"
-                  class="w-full text-sm border border-gray-300 rounded px-2 py-1"
-                >
-                  <option value="Available">Available</option>
-                  <option value="Booked">Booked</option>
-                  <option value="Occupied">Occupied</option>
-                  <option value="Under Maintenance">Under Maintenance</option>
-                </select>
+             <div class="mb-3">
+               <label class="block text-xs text-gray-500 mb-1">Status</label>
+               <select
+                 @change="updateHouseStatus(house.id, $event.target.value)"
+                 :value="house.status"
+                 class="w-full text-sm border border-gray-300 rounded px-2 py-1"
+               >
+                 <option value="Available">Available</option>
+                 <option value="Booked">Booked</option>
+                 <option value="Taken">Taken</option>
+                 <option value="Under Maintenance">Under Maintenance</option>
+               </select>
               </div>
               <div class="flex gap-2">
                 <button @click="editHouse(house)" class="flex-1 btn-secondary text-sm">Edit</button>
@@ -197,49 +197,44 @@
           <div v-for="booking in bookings" :key="booking.id" class="card p-6">
             <div class="flex flex-col md:flex-row md:items-center md:justify-between">
               <div class="flex-1">
-                <div class="flex items-center gap-3 mb-2">
-                  <h3 class="text-lg font-semibold text-gray-900">{{ booking.houseTitle }}</h3>
-                  <span 
-                    :class="[
-                      'px-3 py-1 rounded-full text-xs font-semibold',
-                      booking.status === 'confirmed' ? 'bg-green-100 text-green-800' :
-                      booking.status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
-                      booking.status === 'completed' ? 'bg-blue-100 text-blue-800' :
-                      'bg-red-100 text-red-800'
-                    ]"
-                  >
-                    {{ booking.status.charAt(0).toUpperCase() + booking.status.slice(1) }}
-                  </span>
-                </div>
+            <div class="flex items-center gap-3 mb-2">
+              <h3 class="text-lg font-semibold text-gray-900">{{ booking.houseTitle }}</h3>
+              <span 
+                :class="[
+                  'px-3 py-1 rounded-full text-xs font-semibold',
+                  booking.status === 'confirmed' ? 'bg-green-100 text-green-800' :
+                  booking.status === 'completed' ? 'bg-blue-100 text-blue-800' :
+                  booking.status === 'booked' ? 'bg-yellow-100 text-yellow-800' :
+                  booking.status === 'taken' ? 'bg-indigo-100 text-indigo-800' :
+                  booking.status === 'cancelled' ? 'bg-red-100 text-red-800' :
+                  'bg-gray-100 text-gray-800'
+                ]"
+              >
+                {{ booking.status.charAt(0).toUpperCase() + booking.status.slice(1) }}
+              </span>
+            </div>
                 <div class="space-y-1 text-sm text-gray-600">
                   <p><strong>User:</strong> {{ booking.userName }} ({{ booking.userEmail }})</p>
                   <p><strong>Date:</strong> {{ booking.date }} at {{ booking.time }}</p>
                   <p><strong>Payment:</strong> {{ booking.paymentMethod === 'mpesa' ? 'M-Pesa' : 'Pay on-site' }}</p>
                 </div>
               </div>
-              <div class="mt-4 md:mt-0 flex gap-2">
-                <button 
-                  v-if="booking.status === 'pending'"
-                  @click="updateBookingStatus(booking.id, 'confirmed')"
-                  class="btn-primary text-sm"
-                >
-                  Confirm
-                </button>
-                <button 
-                  v-if="booking.status === 'confirmed'"
-                  @click="updateBookingStatus(booking.id, 'completed')"
-                  class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg text-sm"
-                >
-                  Complete
-                </button>
-                <button 
-                  v-if="booking.status === 'pending'"
-                  @click="updateBookingStatus(booking.id, 'cancelled')"
-                  class="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg text-sm"
-                >
-                  Cancel
-                </button>
-              </div>
+               <div class="mt-4 md:mt-0 flex gap-2">
+                 <button 
+                   v-if="booking.status === 'booked'"
+                   @click="updateBookingStatus(booking.id, 'taken')"
+                   class="btn-primary text-sm"
+                 >
+                   Mark as Taken (Paid)
+                 </button>
+                 <button 
+                   v-if="booking.status === 'booked'"
+                   @click="updateBookingStatus(booking.id, 'cancelled')"
+                   class="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg text-sm"
+                 >
+                   Cancel
+                 </button>
+               </div>
             </div>
           </div>
         </div>
@@ -474,26 +469,49 @@
 
           <form @submit.prevent="addHouse" class="space-y-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">Title *</label>
-                <input
-                  v-model="newHouse.title"
-                  type="text"
-                  required
-                  class="input-field"
-                  placeholder="e.g., Modern 2BR Apartment"
-                />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">Location *</label>
-                <input
-                  v-model="newHouse.location"
-                  type="text"
-                  required
-                  class="input-field"
-                  placeholder="e.g., Nairobi, Kilimani"
-                />
-              </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2">Title *</label>
+                  <input
+                    v-model="newHouse.title"
+                    type="text"
+                    required
+                    class="input-field"
+                    placeholder="e.g., Modern 2BR Apartment"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2">Location *</label>
+                  <input
+                    v-model="newHouse.location"
+                    type="text"
+                    required
+                    class="input-field"
+                    placeholder="e.g., Milimani, Kisumu"
+                  />
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2">Latitude (Optional)</label>
+                  <input
+                    v-model="newHouse.latitude"
+                    type="number"
+                    step="any"
+                    class="input-field"
+                    placeholder="-0.0917"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2">Longitude (Optional)</label>
+                  <input
+                    v-model="newHouse.longitude"
+                    type="number"
+                    step="any"
+                    class="input-field"
+                    placeholder="34.7680"
+                  />
+                </div>
             </div>
 
             <div>
@@ -655,7 +673,9 @@ const newHouse = ref({
   bedrooms: '',
   bathrooms: '',
   amenities: '',
-  status: 'Available'
+  status: 'Available',
+  latitude: '',
+  longitude: ''
 });
 const houseImages = ref([]);
 const houseVideo = ref(null);
@@ -958,7 +978,9 @@ const editHouse = (house) => {
     bedrooms: house.bedrooms ? house.bedrooms.toString() : '',
     bathrooms: house.bathrooms ? house.bathrooms.toString() : '',
     amenities: house.amenities ? house.amenities.join(', ') : '',
-    status: house.status
+    status: house.status,
+    latitude: house.latitude || '',
+    longitude: house.longitude || ''
   };
   houseImages.value = house.images || [];
   houseVideo.value = house.videoUrl || null;
@@ -1051,6 +1073,8 @@ const addHouse = async () => {
       amenities: newHouse.value.amenities ? newHouse.value.amenities.split(',').map(a => a.trim()) : [],
       images: imageUrls.length > 0 ? imageUrls : houseImages.value, // Use existing images if no new ones uploaded
       videoUrl: videoUrl || houseVideo.value,
+      latitude: parseFloat(newHouse.value.latitude) || null,
+      longitude: parseFloat(newHouse.value.longitude) || null,
       updatedAt: new Date()
     };
 
@@ -1100,8 +1124,8 @@ const addHouse = async () => {
 const getMockHouses = () => [
   {
     id: '1',
-    title: 'Modern Bedsitter in Kilimani',
-    location: 'Nairobi',
+    title: 'Modern Bedsitter in Milimani',
+    location: 'Milimani',
     rent: 15000,
     images: ['https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=500'],
     status: 'Available'
@@ -1111,13 +1135,13 @@ const getMockHouses = () => [
 const getMockBookings = () => [
   {
     id: '1',
-    houseTitle: 'Modern Bedsitter in Kilimani',
+    houseTitle: 'Modern Bedsitter in Milimani',
     userName: 'John Doe',
     userEmail: 'john@example.com',
     date: '2026-02-01',
     time: '10:00',
-    paymentMethod: 'mpesa',
-    status: 'pending'
+    paymentMethod: 'onsite',
+    status: 'booked'
   }
 ];
 
@@ -1130,8 +1154,8 @@ const getGoogleMapsUrl = (coords, locationText) => {
     // Use text address for search
     return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(locationText)}`;
   } else {
-    // Fallback to Nairobi if no valid location
-    return 'https://www.google.com/maps/place/Nairobi,+Kenya';
+    // Fallback to Kisumu if no valid location (Kisumu city center)
+    return 'https://www.google.com/maps/place/Kisumu,+Kenya';
   }
 };
 
@@ -1144,7 +1168,7 @@ const getLocationDisplay = (coords, locationText) => {
     return `${coords.lat.toFixed(4)}, ${coords.lng.toFixed(4)}`;
   } else {
     // Fallback
-    return 'Location not available';
+    return 'Kisumu, Kenya';
   }
 };
 </script>

@@ -336,8 +336,8 @@ const getMockHouse = (houseId) => {
   const houses = [
     {
       id: 'img1',
-      title: 'Modern Bedsitter in Kilimani',
-      location: 'Nairobi',
+      title: 'Modern Bedsitter in Milimani',
+      location: 'Milimani',
       houseType: 'Bedsitter',
       rent: 15000,
       images: ['/img1.PNG'],
@@ -347,8 +347,8 @@ const getMockHouse = (houseId) => {
     },
     {
       id: 'img2',
-      title: 'Spacious 2 Bedroom in Westlands',
-      location: 'Nairobi',
+      title: 'Spacious 2 Bedroom in Nyalenda B',
+      location: 'Nyalenda B',
       houseType: '2 Bedroom',
       rent: 45000,
       images: ['/img2.PNG'],
@@ -358,8 +358,8 @@ const getMockHouse = (houseId) => {
     },
     {
       id: 'img3',
-      title: 'Affordable Single Room in Kasarani',
-      location: 'Nairobi',
+      title: 'Affordable Single Room in Kondele',
+      location: 'Kondele',
       houseType: 'Single Room',
       rent: 8000,
       images: ['/img3.PNG'],
@@ -369,8 +369,8 @@ const getMockHouse = (houseId) => {
     },
     {
       id: 'img4',
-      title: 'Luxury 3 Bedroom in Lavington',
-      location: 'Nairobi',
+      title: 'Luxury 3 Bedroom in Lolwe Estate',
+      location: 'Lolwe Estate',
       houseType: '3 Bedroom',
       rent: 85000,
       images: ['/img4.PNG'],
@@ -380,8 +380,8 @@ const getMockHouse = (houseId) => {
     },
     {
       id: 'img5',
-      title: 'Cozy 1 Bedroom in South B',
-      location: 'Nairobi',
+      title: 'Cozy 1 Bedroom in Migosi',
+      location: 'Migosi',
       houseType: '1 Bedroom',
       rent: 25000,
       images: ['/img5.PNG'],
@@ -391,8 +391,8 @@ const getMockHouse = (houseId) => {
     },
     {
       id: 'img6',
-      title: 'Modern Bedsitter in Mombasa',
-      location: 'Mombasa',
+      title: 'Modern Bedsitter in Tom Mboya Estate',
+      location: 'Tom Mboya Estate (TM)',
       houseType: 'Bedsitter',
       rent: 12000,
       images: ['/img6.PNG'],
@@ -417,14 +417,21 @@ const submitBooking = async () => {
       houseTitle: house.value.title,
       date: bookingData.value.date,
       time: bookingData.value.time,
-      paymentMethod: bookingData.value.paymentMethod,
+      paymentMethod: 'onsite', // Changed to onsite payment only
       phoneNumber: bookingData.value.phoneNumber,
-      status: 'pending',
+      status: 'booked', // Changed from 'pending' to 'booked'
       createdAt: new Date().toISOString()
     });
 
-    alert('Booking submitted successfully! Our team will contact you shortly.');
-    router.push('/dashboard');
+    alert('Booking submitted successfully! You will be redirected to WhatsApp to chat with our agent.');
+    
+    // Redirect to WhatsApp after booking
+    const whatsappNumber = '+254792807900'; // Replace with actual agent number
+    const message = `Hello, I've booked a viewing for ${house.value.title} on ${bookingData.value.date} at ${bookingData.value.time}.`;
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${whatsappNumber.replace('+', '')}?text=${encodedMessage}`;
+    
+    window.location.href = whatsappUrl;
   } catch (error) {
     console.error('Error submitting booking:', error);
     alert('Failed to submit booking. Please try again.');
