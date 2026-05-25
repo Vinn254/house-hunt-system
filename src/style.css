@@ -16,7 +16,10 @@
 
 @layer base {
   body {
-    @apply bg-gray-50 text-gray-900;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 35%, #0f172a 100%);
+    color: #e2e8f0;
+    min-height: 100vh;
+    background-attachment: fixed;
   }
 }
 

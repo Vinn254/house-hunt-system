@@ -1,26 +1,95 @@
 <template>
   <div class="min-h-screen bg-gray-50">
     <!-- Hero Section -->
-    <section class="bg-gradient-to-r from-primary-600 via-primary-700 to-primary-800 text-white py-20">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center">
-          <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-            Discover Your Dream Home<br />
-            <span class="text-primary-100">Verified. Trusted. Hassle-Free.</span>
-          </h1>
-          <p class="text-xl md:text-2xl text-white/90 mb-4 max-w-3xl mx-auto">
-            Kisumu's most reliable house hunting platform connecting you with genuine vacant properties
-          </p>
-          <p class="text-lg text-primary-100 mb-8">
-            ✓ 100% Verified Listings  ✓ No Fake Brokers  ✓ Transparent Pricing  ✓ Instant Booking
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <button class="bg-primary-50 text-primary-800 hover:bg-primary-100 font-bold py-4 px-8 rounded-lg text-lg transition-all transform hover:scale-105 shadow-lg">
-              Browse Houses Now
-            </button>
-            <button class="bg-primary-800 hover:bg-primary-900 text-white font-bold py-4 px-8 rounded-lg text-lg transition-all border-2 border-white/30">
-              How It Works
-            </button>
+    <section class="relative overflow-hidden py-20">
+      <div class="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 opacity-95"></div>
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div class="space-y-8">
+            <div class="inline-flex items-center gap-2 rounded-full border border-sky-300/20 bg-sky-300/10 px-4 py-2 text-sm text-sky-100">
+              <span class="font-semibold">Kisumu House Hunt</span>
+              <span class="text-sky-200">Best in Kisumu</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold leading-tight text-white">
+              Discover Your Dream Home
+              <span class="block text-sky-300 mt-2">Verified. Trusted. Hassle-Free.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-200 max-w-xl">
+              Kisumu's most reliable house hunting platform connecting you with genuine vacant properties.
+            </p>
+            <div class="grid gap-3 sm:grid-cols-2">
+              <div class="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-lg shadow-slate-950/20">
+                <p class="text-slate-100 font-semibold">✓ 100% Verified Listings</p>
+              </div>
+              <div class="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-lg shadow-slate-950/20">
+                <p class="text-slate-100 font-semibold">✓ No Fake Brokers</p>
+              </div>
+              <div class="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-lg shadow-slate-950/20">
+                <p class="text-slate-100 font-semibold">✓ Transparent Pricing</p>
+              </div>
+              <div class="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-lg shadow-slate-950/20">
+                <p class="text-slate-100 font-semibold">✓ Instant Booking</p>
+              </div>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <button class="btn-primary w-full sm:w-auto py-4 px-8 text-lg">
+                Browse Houses Now
+              </button>
+              <button class="w-full sm:w-auto rounded-lg border border-white/20 bg-white/10 py-4 px-8 text-lg font-semibold text-white transition hover:bg-white/20">
+                How It Works
+              </button>
+            </div>
+          </div>
+
+          <div class="relative">
+            <div class="rounded-[2rem] overflow-hidden shadow-2xl shadow-slate-950/40 ring-1 ring-white/10">
+              <img src="/placeholder-house.jpg" alt="Dream home in Kisumu" class="w-full h-full min-h-[420px] object-cover" />
+            </div>
+
+            <div class="absolute top-6 right-6 w-[18rem] space-y-4">
+              <div class="rounded-3xl border border-white/10 bg-slate-900/90 p-4 shadow-2xl shadow-slate-950/30 backdrop-blur">
+                <div class="flex items-center gap-3">
+                  <img src="/img5.PNG" alt="Featured house" class="h-16 w-16 rounded-3xl object-cover border border-slate-700" />
+                  <div>
+                    <p class="text-sm text-slate-400 uppercase tracking-[0.2em]">Mini Tour</p>
+                    <p class="font-semibold text-white">Private preview homes</p>
+                  </div>
+                </div>
+                <div class="mt-4 grid gap-2 text-sm text-slate-200">
+                  <div class="inline-flex items-center gap-2 rounded-2xl bg-slate-800/90 px-3 py-2">
+                    <span class="h-2.5 w-2.5 rounded-full bg-sky-400"></span>
+                    Verified listings
+                  </div>
+                  <div class="inline-flex items-center gap-2 rounded-2xl bg-slate-800/90 px-3 py-2">
+                    <span class="h-2.5 w-2.5 rounded-full bg-emerald-400"></span>
+                    Trusted brokers
+                  </div>
+                </div>
+              </div>
+              <div class="rounded-3xl border border-white/10 bg-slate-900/90 p-5 shadow-2xl shadow-slate-950/30 backdrop-blur">
+                <p class="text-sm uppercase tracking-[0.2em] text-sky-300">Why clients love us</p>
+                <div class="mt-4 grid gap-3">
+                  <div class="rounded-3xl bg-slate-950/90 px-4 py-3">
+                    <p class="text-slate-200">Fast booking</p>
+                    <p class="font-semibold text-white">30+ homes booked daily</p>
+                  </div>
+                  <div class="rounded-3xl bg-slate-950/90 px-4 py-3">
+                    <p class="text-slate-200">Local guidance</p>
+                    <p class="font-semibold text-white">Kisumu area experts</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="absolute -bottom-8 left-6 right-6 rounded-3xl border border-white/10 bg-slate-900/90 p-6 shadow-2xl shadow-slate-950/40 backdrop-blur">
+              <div class="flex items-center gap-4">
+                <span class="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-sky-500/15 text-sky-200">KSM</span>
+                <div>
+                  <p class="text-sm uppercase tracking-[0.2em] text-slate-400">Featured</p>
+                  <p class="text-lg font-semibold text-white">Kisumu-ready houses with easy viewing</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
