@@ -426,7 +426,7 @@ const submitBooking = async () => {
     alert('Booking submitted successfully! You will be redirected to WhatsApp to chat with our agent.');
     
     // Redirect to WhatsApp after booking
-    const whatsappNumber = '+254792807900'; // Replace with actual agent number
+    const whatsappNumber = '+254705723811'; // Replace with actual agent number
     const message = `Hello, I've booked a viewing for ${house.value.title} on ${bookingData.value.date} at ${bookingData.value.time}.`;
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${whatsappNumber.replace('+', '')}?text=${encodedMessage}`;

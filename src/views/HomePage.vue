@@ -309,12 +309,12 @@ const filteredHouses = computed(() => {
   });
 });
 
-// Fetch houses from Firebase
-onMounted(() => {
-  const housesQuery = query(
-    collection(db, 'houses'),
-    where('status', '==', 'Available')
-  );
+  // Fetch houses from Firebase
+  onMounted(() => {
+    const housesQuery = query(
+      collection(db, 'houses'),
+      where('status', 'in', ['Available', 'Booked'])
+    );
 
   onSnapshot(housesQuery, (snapshot) => {
     houses.value = snapshot.docs.map(doc => ({
@@ -355,7 +355,7 @@ const getMockHouses = () => [
     rent: 45000,
     images: ['/img2.PNG'],
     amenities: ['WiFi', 'Gym', 'Swimming Pool', 'Parking'],
-    status: 'Available',
+    status: 'Booked', // This house is booked
     verified: true
   },
   {
@@ -377,7 +377,7 @@ const getMockHouses = () => [
     rent: 85000,
     images: ['/img4.PNG'],
     amenities: ['WiFi', 'Gym', 'Swimming Pool', 'Parking', 'Garden'],
-    status: 'Available',
+    status: 'Taken', // This house is taken (paid for)
     verified: true
   },
   {
