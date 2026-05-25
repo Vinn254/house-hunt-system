@@ -64,7 +64,19 @@
 
           <!-- House Details -->
           <div class="card p-6 mb-6">
-            <h1 class="text-3xl font-bold text-gray-900 mb-4">{{ house.title }}</h1>
+            <div class="flex items-start justify-between mb-4">
+              <h1 class="text-3xl font-bold text-gray-900">{{ house.title }}</h1>
+              <span 
+                class="px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap"
+                :class="{
+                  'bg-green-100 text-green-800': house.status === 'free',
+                  'bg-yellow-100 text-yellow-800': house.status === 'booked',
+                  'bg-red-100 text-red-800': house.status === 'taken'
+                }"
+              >
+                {{ house.status ? house.status.charAt(0).toUpperCase() + house.status.slice(1) : 'Available' }}
+              </span>
+            </div>
             
             <div class="flex items-center text-gray-600 mb-6">
               <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -210,7 +222,6 @@
                  <label class="block text-sm font-medium text-gray-700 mb-2">Payment Method</label>
                  <select v-model="bookingData.paymentMethod" required class="input-field">
                    <option value="">Select method</option>
-                   <option value="mpesa">M-Pesa</option>
                    <option value="onsite">Pay on-site</option>
                  </select>
                </div>
@@ -342,7 +353,7 @@ const getMockHouse = (houseId) => {
       rent: 15000,
       images: ['/img1.PNG'],
       amenities: ['WiFi', 'Water 24/7', 'Parking', 'Security'],
-      status: 'Available',
+      status: 'free',
       verified: true
     },
     {
@@ -353,7 +364,7 @@ const getMockHouse = (houseId) => {
       rent: 45000,
       images: ['/img2.PNG'],
       amenities: ['WiFi', 'Gym', 'Swimming Pool', 'Parking'],
-      status: 'Available',
+      status: 'free',
       verified: true
     },
     {
@@ -364,7 +375,7 @@ const getMockHouse = (houseId) => {
       rent: 8000,
       images: ['/img3.PNG'],
       amenities: ['Water 24/7', 'Security'],
-      status: 'Available',
+      status: 'free',
       verified: true
     },
     {
@@ -375,7 +386,7 @@ const getMockHouse = (houseId) => {
       rent: 85000,
       images: ['/img4.PNG'],
       amenities: ['WiFi', 'Gym', 'Swimming Pool', 'Parking', 'Garden'],
-      status: 'Available',
+      status: 'free',
       verified: true
     },
     {
@@ -386,7 +397,7 @@ const getMockHouse = (houseId) => {
       rent: 25000,
       images: ['/img5.PNG'],
       amenities: ['WiFi', 'Water 24/7', 'Parking'],
-      status: 'Available',
+      status: 'free',
       verified: true
     },
     {
@@ -397,7 +408,7 @@ const getMockHouse = (houseId) => {
       rent: 12000,
       images: ['/img6.PNG'],
       amenities: ['WiFi', 'Water 24/7', 'Security'],
-      status: 'Available',
+      status: 'free',
       verified: true
     }
   ];

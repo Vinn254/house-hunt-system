@@ -89,7 +89,6 @@
                </div>
              </div>
            </div>
-
           <div class="bg-white rounded-lg shadow-md p-6">
             <div class="flex items-start space-x-4">
               <div class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0">
@@ -115,8 +114,8 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 mb-1">Office Location</h3>
-                <p class="text-gray-600">Ruaraka, Nairobi</p>
-                <p class="text-sm text-gray-500 mt-1">Open 24/7 • Serving Saika, Ruaraka & Beyond</p>
+                <p class="text-gray-600">Kisumu, Kenya</p>
+                <p class="text-sm text-gray-500 mt-1">Open 24/7</p>
               </div>
             </div>
           </div>
