@@ -16,8 +16,8 @@
 
 @layer base {
   body {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 35%, #0f172a 100%);
-    color: #e2e8f0;
+    background: linear-gradient(135deg, #dbeafe 0%, #ffffff 45%, #cfe8ff 100%);
+    color: #0f172a;
     min-height: 100vh;
     background-attachment: fixed;
   }
@@ -33,7 +33,7 @@
   }
   
   .card {
-    @apply bg-white rounded-lg shadow-md overflow-hidden;
+    @apply bg-white text-slate-900 rounded-lg shadow-md overflow-hidden;
   }
   
   .input-field {
