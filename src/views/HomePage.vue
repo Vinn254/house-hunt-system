@@ -372,26 +372,27 @@ const filteredHouses = computed(() => {
   });
 });
 
-  // Fetch houses from Firebase
+  // Fetch houses from Firebase (normalize status to handle inconsistent DB values)
   onMounted(() => {
-    const housesQuery = query(
-      collection(db, 'houses'),
-      where('status', 'in', ['free', 'booked'])
-    );
+    const housesCollection = collection(db, 'houses');
 
-  onSnapshot(housesQuery, (snapshot) => {
-    houses.value = snapshot.docs.map(doc => ({
-      id: doc.id,
-      ...doc.data()
-    }));
-    loading.value = false;
-  }, (error) => {
-    console.error('Error fetching houses:', error);
-    loading.value = false;
-    // Use mock data as fallback
-    houses.value = getMockHouses();
+    onSnapshot(housesCollection, (snapshot) => {
+      houses.value = snapshot.docs.map(doc => {
+        const data = doc.data() || {};
+        return {
+          id: doc.id,
+          ...data,
+          status: (data.status || 'free').toLowerCase()
+        };
+      });
+      loading.value = false;
+    }, (error) => {
+      console.error('Error fetching houses:', error);
+      loading.value = false;
+      // Use mock data as fallback
+      houses.value = getMockHouses();
+    });
   });
-});
 
 const viewHouse = (houseId) => {
   router.push(`/house/${houseId}`);

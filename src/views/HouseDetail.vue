@@ -315,7 +315,8 @@ onMounted(async () => {
   try {
     const houseDoc = await getDoc(doc(db, 'houses', houseId));
     if (houseDoc.exists()) {
-      house.value = { id: houseDoc.id, ...houseDoc.data() };
+      const data = houseDoc.data() || {};
+      house.value = { id: houseDoc.id, ...data, status: (data.status || 'free').toLowerCase() };
     }
   } catch (error) {
     console.error('Error fetching house:', error);
