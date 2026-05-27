@@ -1,10 +1,10 @@
 <template>
-  <div class="min-h-screen bg-gray-50 py-8">
+  <div class="min-h-screen bg-slate-950 py-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Back Button -->
       <button 
         @click="$router.back()"
-        class="flex items-center text-gray-600 hover:text-primary-600 mb-6"
+        class="flex items-center text-slate-400 hover:text-primary-600 mb-6"
       >
         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
@@ -13,9 +13,9 @@
       </button>
 
       <div v-if="loading" class="animate-pulse">
-        <div class="h-96 bg-gray-300 rounded-lg mb-6"></div>
-        <div class="h-8 bg-gray-300 rounded w-3/4 mb-4"></div>
-        <div class="h-4 bg-gray-300 rounded w-1/2"></div>
+        <div class="h-96 bg-slate-800 rounded-lg mb-6"></div>
+        <div class="h-8 bg-slate-800 rounded w-3/4 mb-4"></div>
+        <div class="h-4 bg-slate-800 rounded w-1/2"></div>
       </div>
 
       <div v-else-if="house" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -33,7 +33,7 @@
                <button 
                  v-if="house.images.length > 1"
                  @click="previousImage"
-                 class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full"
+                 class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-slate-950/80 hover:bg-slate-900 p-2 rounded-full"
                >
                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
@@ -42,7 +42,7 @@
                <button 
                  v-if="house.images.length > 1"
                  @click="nextImage"
-                 class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full"
+                 class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-slate-950/80 hover:bg-slate-900 p-2 rounded-full"
                >
                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -65,7 +65,7 @@
           <!-- House Details -->
           <div class="card p-6 mb-6">
             <div class="flex items-start justify-between mb-4">
-              <h1 class="text-3xl font-bold text-gray-900">{{ house.title }}</h1>
+              <h1 class="text-3xl font-bold text-slate-100">{{ house.title }}</h1>
               <span 
                 class="px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap"
                 :class="{
@@ -78,7 +78,7 @@
               </span>
             </div>
             
-            <div class="flex items-center text-gray-600 mb-6">
+            <div class="flex items-center text-slate-400 mb-6">
               <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
@@ -87,38 +87,38 @@
             </div>
 
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-              <div class="bg-gray-50 p-4 rounded-lg">
-                <p class="text-sm text-gray-600">Type</p>
-                <p class="text-lg font-semibold text-gray-900">{{ house.houseType }}</p>
+              <div class="bg-slate-950 p-4 rounded-lg">
+                <p class="text-sm text-slate-400">Type</p>
+                <p class="text-lg font-semibold text-slate-100">{{ house.houseType }}</p>
               </div>
-              <div class="bg-gray-50 p-4 rounded-lg">
-                <p class="text-sm text-gray-600">Monthly Rent</p>
+              <div class="bg-slate-950 p-4 rounded-lg">
+                <p class="text-sm text-slate-400">Monthly Rent</p>
                 <p class="text-lg font-semibold text-primary-600">KSh {{ house.rent.toLocaleString() }}</p>
               </div>
-              <div class="bg-gray-50 p-4 rounded-lg">
-                <p class="text-sm text-gray-600">Deposit</p>
-                <p class="text-lg font-semibold text-gray-900">KSh {{ (house.rent * 2).toLocaleString() }}</p>
+              <div class="bg-slate-950 p-4 rounded-lg">
+                <p class="text-sm text-slate-400">Deposit</p>
+                <p class="text-lg font-semibold text-slate-100">KSh {{ (house.rent * 2).toLocaleString() }}</p>
               </div>
-              <div class="bg-gray-50 p-4 rounded-lg">
-                <p class="text-sm text-gray-600">Viewing Fee</p>
-                <p class="text-lg font-semibold text-gray-900">KSh 1000</p>
+              <div class="bg-slate-950 p-4 rounded-lg">
+                <p class="text-sm text-slate-400">Viewing Fee</p>
+                <p class="text-lg font-semibold text-slate-100">KSh 1000</p>
               </div>
             </div>
 
             <div class="mb-6">
-              <h2 class="text-xl font-semibold text-gray-900 mb-3">Description</h2>
-              <p class="text-gray-600 leading-relaxed">
+              <h2 class="text-xl font-semibold text-slate-100 mb-3">Description</h2>
+              <p class="text-slate-400 leading-relaxed">
                 {{ house.description || 'This is a beautiful and well-maintained property in a prime location. The house features modern amenities and is perfect for comfortable living.' }}
               </p>
             </div>
 
             <div class="mb-6">
-              <h2 class="text-xl font-semibold text-gray-900 mb-3">Amenities</h2>
+              <h2 class="text-xl font-semibold text-slate-100 mb-3">Amenities</h2>
               <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
                 <div 
                   v-for="amenity in house.amenities" 
                   :key="amenity"
-                  class="flex items-center text-gray-700"
+                  class="flex items-center text-slate-300"
                 >
                   <svg class="w-5 h-5 text-primary-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
@@ -130,8 +130,8 @@
 
             <!-- Video Section -->
             <div v-if="house.videoUrl" class="mb-6">
-              <h2 class="text-xl font-semibold text-gray-900 mb-3">Video Walkthrough</h2>
-              <div class="aspect-video bg-gray-200 rounded-lg overflow-hidden">
+              <h2 class="text-xl font-semibold text-slate-100 mb-3">Video Walkthrough</h2>
+              <div class="aspect-video bg-slate-900/90 rounded-lg overflow-hidden">
                 <video controls class="w-full h-full">
                   <source :src="house.videoUrl" type="video/mp4">
                   Your browser does not support the video tag.
@@ -147,13 +147,13 @@
             <div class="mb-6">
               <p class="text-3xl font-bold text-primary-600 mb-2">
                 KSh {{ house.rent.toLocaleString() }}
-                <span class="text-lg text-gray-600 font-normal">/month</span>
+                <span class="text-lg text-slate-400 font-normal">/month</span>
               </p>
-              <p class="text-sm text-gray-600">Viewing fee: KSh 1000</p>
+              <p class="text-sm text-slate-400">Viewing fee: KSh 1000</p>
             </div>
 
             <div v-if="!user" class="space-y-4">
-              <p class="text-sm text-gray-600">Sign in to book a viewing</p>
+              <p class="text-sm text-slate-400">Sign in to book a viewing</p>
               <button 
                 @click="$router.push('/login')"
                 class="w-full btn-primary"
@@ -173,7 +173,7 @@
 
             <form v-else @submit.prevent="submitBooking" class="space-y-4">
                <div>
-                 <label class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                 <label class="block text-sm font-medium text-slate-300 mb-2">Full Name</label>
                  <input
                    v-model="bookingData.name"
                    type="text"
@@ -184,7 +184,7 @@
                </div>
 
                <div>
-                 <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                 <label class="block text-sm font-medium text-slate-300 mb-2">Phone Number</label>
                  <input
                    v-model="bookingData.phoneNumber"
                    type="tel"
@@ -195,7 +195,7 @@
                </div>
 
                <div>
-                 <label class="block text-sm font-medium text-gray-700 mb-2">Preferred Date</label>
+                 <label class="block text-sm font-medium text-slate-300 mb-2">Preferred Date</label>
                  <input
                    v-model="bookingData.date"
                    type="date"
@@ -206,7 +206,7 @@
                </div>
 
                <div>
-                 <label class="block text-sm font-medium text-gray-700 mb-2">Preferred Time</label>
+                 <label class="block text-sm font-medium text-slate-300 mb-2">Preferred Time</label>
                  <select v-model="bookingData.time" required class="input-field">
                    <option value="">Select time</option>
                    <option value="09:00">9:00 AM</option>
@@ -219,7 +219,7 @@
                </div>
 
                <div>
-                 <label class="block text-sm font-medium text-gray-700 mb-2">Payment Method</label>
+                 <label class="block text-sm font-medium text-slate-300 mb-2">Payment Method</label>
                  <select v-model="bookingData.paymentMethod" required class="input-field">
                    <option value="">Select method</option>
                    <option value="onsite">Pay on-site</option>
@@ -244,9 +244,9 @@
               </div>
             </form>
 
-            <div class="mt-6 pt-6 border-t border-gray-200">
-              <h3 class="font-semibold text-gray-900 mb-3">Important Information</h3>
-              <ul class="space-y-2 text-sm text-gray-600">
+            <div class="mt-6 pt-6 border-t border-slate-800">
+              <h3 class="font-semibold text-slate-100 mb-3">Important Information</h3>
+              <ul class="space-y-2 text-sm text-slate-400">
                 <li class="flex items-start">
                   <svg class="w-5 h-5 text-primary-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -272,7 +272,7 @@
       </div>
 
       <div v-else class="text-center py-12">
-        <p class="text-gray-600">House not found</p>
+        <p class="text-slate-400">House not found</p>
       </div>
     </div>
   </div>
@@ -281,7 +281,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { doc, getDoc, addDoc, collection } from 'firebase/firestore';
+import { doc, getDoc, addDoc, collection, updateDoc } from 'firebase/firestore';
 import { db } from '../firebase/config';
 import { useAuth } from '../composables/useAuth';
 
@@ -420,6 +420,7 @@ const submitBooking = async () => {
   submitting.value = true;
 
   try {
+    // Create the booking
     await addDoc(collection(db, 'bookings'), {
       houseId: house.value.id,
       userId: user.value?.uid || null,
@@ -428,17 +429,29 @@ const submitBooking = async () => {
       houseTitle: house.value.title,
       date: bookingData.value.date,
       time: bookingData.value.time,
-      paymentMethod: 'onsite', // Changed to onsite payment only
+      paymentMethod: 'onsite',
       phoneNumber: bookingData.value.phoneNumber,
-      status: 'booked', // Changed from 'pending' to 'booked'
+      status: 'booked',
       createdAt: new Date().toISOString()
     });
 
+    // Update house status to 'booked'
+    try {
+      await updateDoc(doc(db, 'houses', house.value.id), {
+        status: 'booked',
+        bookedAt: new Date().toISOString(),
+        bookedBy: user.value?.uid || null
+      });
+    } catch (updateError) {
+      console.warn('Warning: Could not update house status (might be permission issue):', updateError);
+      // Continue anyway as booking was created
+    }
+
     alert('Booking submitted successfully! You will be redirected to WhatsApp to chat with our agent.');
     
-    // Redirect to WhatsApp after booking
-    const whatsappNumber = '+254705723811'; // Replace with actual agent number
-    const message = `Hello, I've booked a viewing for ${house.value.title} on ${bookingData.value.date} at ${bookingData.value.time}.`;
+    // Redirect to WhatsApp after booking with detailed message
+    const whatsappNumber = '+254705723811';
+    const message = `Hello! I've successfully booked a viewing for ${house.value.title} (KSh ${house.value.rent.toLocaleString()}/month) on ${bookingData.value.date} at ${bookingData.value.time}. My phone number is ${bookingData.value.phoneNumber}. Please confirm the exact location and viewing details. Thank you!`;
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${whatsappNumber.replace('+', '')}?text=${encodedMessage}`;
     

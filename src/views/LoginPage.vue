@@ -1,7 +1,7 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-primary-50 to-primary-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+  <div class="min-h-screen bg-gradient-to-br from-primary-950 via-slate-950 to-slate-900 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-md w-full">
-      <div class="bg-white rounded-2xl shadow-xl p-8">
+      <div class="section-surface shadow-2xl p-8">
         <!-- Logo and Title -->
         <div class="text-center mb-8">
           <div class="w-16 h-16 bg-primary-600 rounded-xl flex items-center justify-center mx-auto mb-4">
@@ -9,15 +9,15 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 001 1m-6 0h6"></path>
             </svg>
           </div>
-          <h2 class="text-3xl font-bold text-gray-900">{{ isLogin ? 'Welcome Back' : 'Create Account' }}</h2>
-          <p class="mt-2 text-gray-600">{{ isLogin ? 'Sign in to continue your house hunting journey' : 'Join us to start your house hunting journey' }}</p>
+          <h2 class="text-3xl font-bold text-slate-100">{{ isLogin ? 'Welcome Back' : 'Create Account' }}</h2>
+          <p class="mt-2 text-slate-400">{{ isLogin ? 'Sign in to continue your house hunting journey' : 'Join us to start your house hunting journey' }}</p>
         </div>
 
         <!-- Google Sign In -->
         <button 
           @click="handleGoogleLogin"
           :disabled="loading"
-          class="w-full flex items-center justify-center gap-3 bg-white border-2 border-gray-300 hover:border-primary-600 text-gray-700 font-semibold py-3 px-4 rounded-lg transition-all duration-200 mb-4"
+          class="w-full flex items-center justify-center gap-3 bg-slate-950/90 border border-slate-700 hover:border-primary-600 text-slate-300 font-semibold py-3 px-4 rounded-lg transition-all duration-200 mb-4"
         >
           <svg class="w-5 h-5" viewBox="0 0 24 24">
             <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -31,17 +31,17 @@
         <!-- Divider -->
         <div class="relative my-6">
           <div class="absolute inset-0 flex items-center">
-            <div class="w-full border-t border-gray-300"></div>
+            <div class="w-full border-t border-slate-700"></div>
           </div>
           <div class="relative flex justify-center text-sm">
-            <span class="px-4 bg-white text-gray-500">Or continue with email</span>
+            <span class="px-4 bg-slate-950/95 text-slate-400">Or continue with email</span>
           </div>
         </div>
 
         <!-- Email Auth Form -->
         <form @submit.prevent="isLogin ? handleEmailLogin() : handleEmailRegister()" class="space-y-4">
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+            <label class="block text-sm font-medium text-slate-300 mb-2">Email Address</label>
             <input
               v-model="email"
               type="email"
@@ -52,7 +52,7 @@
           </div>
 
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+            <label class="block text-sm font-medium text-slate-300 mb-2">Password</label>
             <input
               v-model="password"
               type="password"

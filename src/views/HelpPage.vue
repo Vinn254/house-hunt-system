@@ -1,19 +1,19 @@
 <template>
-  <div class="min-h-screen bg-gray-50 py-12">
+  <div class="min-h-screen bg-slate-950 py-12">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
-        <h1 class="text-4xl font-bold text-gray-900 mb-4">Help Center</h1>
-        <p class="text-xl text-gray-600">Find answers to common questions about using HouseHuntKE</p>
+        <h1 class="text-4xl font-bold text-slate-100 mb-4">Help Center</h1>
+        <p class="text-xl text-slate-400">Find answers to common questions about using HouseHuntKE</p>
       </div>
 
       <!-- FAQ Section -->
       <div class="space-y-4">
-        <div v-for="(faq, index) in faqs" :key="index" class="bg-white rounded-lg shadow-md overflow-hidden">
+        <div v-for="(faq, index) in faqs" :key="index" class="section-surface rounded-3xl shadow-2xl overflow-hidden">
           <button 
             @click="toggleFaq(index)"
-            class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
+            class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-slate-950 transition-colors"
           >
-            <span class="font-semibold text-gray-900">{{ faq.question }}</span>
+            <span class="font-semibold text-slate-100">{{ faq.question }}</span>
             <svg 
               :class="['w-5 h-5 text-primary-600 transition-transform', openFaq === index ? 'transform rotate-180' : '']"
               fill="none" 
@@ -31,7 +31,7 @@
             leave-from-class="opacity-100 translate-y-0"
             leave-to-class="opacity-0 -translate-y-2"
           >
-            <div v-if="openFaq === index" class="px-6 pb-4 text-gray-600">
+            <div v-if="openFaq === index" class="px-6 pb-4 text-slate-400">
               {{ faq.answer }}
             </div>
           </transition>
@@ -39,14 +39,14 @@
       </div>
 
       <!-- Contact Support -->
-      <div class="mt-12 bg-gradient-to-r from-primary-600 to-lime-600 rounded-lg p-8 text-white text-center">
+      <div class="mt-12 bg-gradient-to-r from-primary-700 to-accent-600 rounded-lg p-8 text-white text-center">
         <h2 class="text-2xl font-bold mb-4">Still Need Help?</h2>
         <p class="mb-6">Our support team is available 24/7 to assist you</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <router-link to="/contact" class="bg-white text-primary-700 hover:bg-lime-50 font-semibold py-3 px-6 rounded-lg transition-colors">
+          <router-link to="/contact" class="bg-slate-950/90 text-white hover:bg-slate-900 font-semibold py-3 px-6 rounded-lg transition-colors">
             Contact Us
           </router-link>
-          <a href="https://wa.me/254792807900" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
+          <a href="https://wa.me/254792807900" target="_blank" class="bg-accent-600 hover:bg-accent-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
             WhatsApp: 0792 807 900
           </a>
         </div>

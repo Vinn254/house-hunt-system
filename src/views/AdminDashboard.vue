@@ -1,10 +1,10 @@
 <template>
-  <div class="min-h-screen bg-gray-50 py-8">
+  <div class="min-h-screen bg-slate-950 py-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Header -->
       <div class="mb-8">
-        <h1 class="text-3xl font-bold text-gray-900 mb-2">Admin Dashboard</h1>
-        <p class="text-gray-600">Manage houses, bookings, and relocation requests</p>
+        <h1 class="text-3xl font-bold text-slate-100 mb-2">Admin Dashboard</h1>
+        <p class="text-slate-400">Manage houses, bookings, and relocation requests</p>
       </div>
 
       <!-- Stats Overview -->
@@ -12,8 +12,8 @@
         <div class="card p-6">
           <div class="flex items-center justify-between">
             <div>
-              <p class="text-sm text-gray-600 mb-1">Total Houses</p>
-              <p class="text-3xl font-bold text-gray-900">{{ houses.length }}</p>
+              <p class="text-sm text-slate-400 mb-1">Total Houses</p>
+              <p class="text-3xl font-bold text-slate-100">{{ houses.length }}</p>
             </div>
             <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
               <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -26,7 +26,7 @@
         <div class="card p-6">
           <div class="flex items-center justify-between">
             <div>
-              <p class="text-sm text-gray-600 mb-1">Pending Bookings</p>
+              <p class="text-sm text-slate-400 mb-1">Pending Bookings</p>
               <p class="text-3xl font-bold text-yellow-600">{{ pendingBookings.length }}</p>
             </div>
             <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
@@ -40,7 +40,7 @@
         <div class="card p-6">
           <div class="flex items-center justify-between">
             <div>
-              <p class="text-sm text-gray-600 mb-1">Relocation Requests</p>
+              <p class="text-sm text-slate-400 mb-1">Relocation Requests</p>
               <p class="text-3xl font-bold text-blue-600">{{ relocationRequests.length }}</p>
             </div>
             <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
@@ -54,7 +54,7 @@
         <div class="card p-6">
           <div class="flex items-center justify-between">
             <div>
-              <p class="text-sm text-gray-600 mb-1">Monthly Revenue</p>
+              <p class="text-sm text-slate-400 mb-1">Monthly Revenue</p>
               <p class="text-3xl font-bold text-green-600">KSh {{ monthlyRevenue.toLocaleString() }}</p>
             </div>
             <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
@@ -68,14 +68,14 @@
 
       <!-- Tabs -->
       <div class="mb-6">
-        <div class="border-b border-gray-200">
+        <div class="border-b border-slate-800">
           <nav class="-mb-px flex space-x-8">
             <button
               @click="activeTab = 'houses'"
               :class="[
                 activeTab === 'houses'
                   ? 'border-primary-600 text-primary-600'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300',
+                  : 'border-transparent text-slate-400 hover:text-slate-300 hover:border-slate-700',
                 'whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm'
               ]"
             >
@@ -86,7 +86,7 @@
               :class="[
                 activeTab === 'bookings'
                   ? 'border-primary-600 text-primary-600'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300',
+                  : 'border-transparent text-slate-400 hover:text-slate-300 hover:border-slate-700',
                 'whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm'
               ]"
             >
@@ -100,7 +100,7 @@
               :class="[
                 activeTab === 'relocation'
                   ? 'border-primary-600 text-primary-600'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300',
+                  : 'border-transparent text-slate-400 hover:text-slate-300 hover:border-slate-700',
                 'whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm'
               ]"
             >
@@ -111,7 +111,7 @@
               :class="[
                 activeTab === 'users'
                   ? 'border-primary-600 text-primary-600'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300',
+                  : 'border-transparent text-slate-400 hover:text-slate-300 hover:border-slate-700',
                 'whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm'
               ]"
             >
@@ -122,7 +122,7 @@
               :class="[
                 activeTab === 'chat'
                   ? 'border-primary-600 text-primary-600'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300',
+                  : 'border-transparent text-slate-400 hover:text-slate-300 hover:border-slate-700',
                 'whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm'
               ]"
             >
@@ -138,7 +138,7 @@
       <!-- Houses Tab -->
       <div v-if="activeTab === 'houses'">
         <div class="flex justify-between items-center mb-6">
-          <h2 class="text-xl font-semibold text-gray-900">Manage Houses</h2>
+          <h2 class="text-xl font-semibold text-slate-100">Manage Houses</h2>
           <button @click="showAddHouseModal = true; editingHouse = null" class="btn-primary">
             <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
@@ -154,30 +154,29 @@
               <span
                 :class="[
                   'absolute top-2 right-2 px-3 py-1 rounded-full text-xs font-semibold',
-                  house.status === 'Available' ? 'bg-green-100 text-green-800' :
-                  house.status === 'Booked' ? 'bg-yellow-100 text-yellow-800' :
-                  house.status === 'Occupied' ? 'bg-blue-100 text-blue-800' :
-                  'bg-gray-100 text-gray-800'
+                  house.status === 'free' ? 'bg-green-100 text-green-800' :
+                  house.status === 'booked' ? 'bg-yellow-100 text-yellow-800' :
+                  house.status === 'taken' ? 'bg-red-100 text-red-800' :
+                  'bg-slate-800 text-slate-300'
                 ]"
               >
-                {{ house.status }}
+                {{ house.status ? house.status.charAt(0).toUpperCase() + house.status.slice(1) : 'Free' }}
               </span>
             </div>
             <div class="p-4">
-              <h3 class="text-lg font-semibold text-gray-900 mb-2">{{ house.title }}</h3>
-              <p class="text-sm text-gray-600 mb-2">{{ house.location }}</p>
+              <h3 class="text-lg font-semibold text-slate-100 mb-2">{{ house.title }}</h3>
+              <p class="text-sm text-slate-400 mb-2">{{ house.location }}</p>
               <p class="text-lg font-bold text-primary-600 mb-4">KSh {{ house.rent.toLocaleString() }}/mo</p>
              <div class="mb-3">
-               <label class="block text-xs text-gray-500 mb-1">Status</label>
+               <label class="block text-xs text-slate-400 mb-1">Status</label>
                <select
                  @change="updateHouseStatus(house.id, $event.target.value)"
                  :value="house.status"
-                 class="w-full text-sm border border-gray-300 rounded px-2 py-1"
+                 class="w-full text-sm border border-slate-700 rounded px-2 py-1"
                >
-                 <option value="Available">Available</option>
-                 <option value="Booked">Booked</option>
-                 <option value="Taken">Taken</option>
-                 <option value="Under Maintenance">Under Maintenance</option>
+                 <option value="free">Free</option>
+                 <option value="booked">Booked</option>
+                 <option value="taken">Taken</option>
                </select>
               </div>
               <div class="flex gap-2">
@@ -191,14 +190,14 @@
 
       <!-- Bookings Tab -->
       <div v-if="activeTab === 'bookings'">
-        <h2 class="text-xl font-semibold text-gray-900 mb-6">Manage Bookings</h2>
+        <h2 class="text-xl font-semibold text-slate-100 mb-6">Manage Bookings</h2>
         
         <div class="space-y-4">
           <div v-for="booking in bookings" :key="booking.id" class="card p-6">
             <div class="flex flex-col md:flex-row md:items-center md:justify-between">
               <div class="flex-1">
             <div class="flex items-center gap-3 mb-2">
-              <h3 class="text-lg font-semibold text-gray-900">{{ booking.houseTitle }}</h3>
+              <h3 class="text-lg font-semibold text-slate-100">{{ booking.houseTitle }}</h3>
               <span 
                 :class="[
                   'px-3 py-1 rounded-full text-xs font-semibold',
@@ -207,13 +206,13 @@
                   booking.status === 'booked' ? 'bg-yellow-100 text-yellow-800' :
                   booking.status === 'taken' ? 'bg-indigo-100 text-indigo-800' :
                   booking.status === 'cancelled' ? 'bg-red-100 text-red-800' :
-                  'bg-gray-100 text-gray-800'
+                  'bg-slate-800 text-slate-300'
                 ]"
               >
                 {{ booking.status.charAt(0).toUpperCase() + booking.status.slice(1) }}
               </span>
             </div>
-                <div class="space-y-1 text-sm text-gray-600">
+                <div class="space-y-1 text-sm text-slate-400">
                   <p><strong>User:</strong> {{ booking.userName }} ({{ booking.userEmail }})</p>
                   <p><strong>Date:</strong> {{ booking.date }} at {{ booking.time }}</p>
                   <p><strong>Payment:</strong> {{ booking.paymentMethod === 'mpesa' ? 'M-Pesa' : 'Pay on-site' }}</p>
@@ -242,7 +241,7 @@
 
       <!-- Relocation Tab -->
       <div v-if="activeTab === 'relocation'">
-        <h2 class="text-xl font-semibold text-gray-900 mb-6">Relocation Requests</h2>
+        <h2 class="text-xl font-semibold text-slate-100 mb-6">Relocation Requests</h2>
         
         <div class="space-y-4">
           <div v-for="request in relocationRequests" :key="request.id" class="card p-6">
@@ -267,15 +266,15 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm mb-4">
               <div>
-                <p class="text-gray-600">User:</p>
-                <p class="font-medium text-gray-900">{{ request.userName }} ({{ request.userEmail }})</p>
+                <p class="text-slate-400">User:</p>
+                <p class="font-medium text-slate-100">{{ request.userName }} ({{ request.userEmail }})</p>
               </div>
               <div>
-                <p class="text-gray-600">Moving Date:</p>
-                <p class="font-medium text-gray-900">{{ request.movingDate }}</p>
+                <p class="text-slate-400">Moving Date:</p>
+                <p class="font-medium text-slate-100">{{ request.movingDate }}</p>
               </div>
               <div>
-                <p class="text-gray-600">From:</p>
+                <p class="text-slate-400">From:</p>
                 <a
                   :href="getGoogleMapsUrl(request.pickupCoords, request.pickupLocation)"
                   target="_blank"
@@ -286,7 +285,7 @@
                 </a>
               </div>
               <div>
-                <p class="text-gray-600">To:</p>
+                <p class="text-slate-400">To:</p>
                 <a
                   :href="getGoogleMapsUrl(request.destinationCoords, request.destinationLocation)"
                   target="_blank"
@@ -327,15 +326,15 @@
 
       <!-- Users Tab -->
       <div v-if="activeTab === 'users'">
-        <h2 class="text-xl font-semibold text-gray-900 mb-6">Manage Users</h2>
+        <h2 class="text-xl font-semibold text-slate-100 mb-6">Manage Users</h2>
 
         <div class="space-y-4">
           <div v-for="user in users" :key="user.id" class="card p-6">
             <div class="flex items-center justify-between">
               <div>
-                <h3 class="text-lg font-semibold text-gray-900">{{ user.displayName || user.email }}</h3>
-                <p class="text-sm text-gray-600">{{ user.email }}</p>
-                <p class="text-sm text-gray-600">Role: {{ user.role }}</p>
+                <h3 class="text-lg font-semibold text-slate-100">{{ user.displayName || user.email }}</h3>
+                <p class="text-sm text-slate-400">{{ user.email }}</p>
+                <p class="text-sm text-slate-400">Role: {{ user.role }}</p>
               </div>
               <div class="flex gap-2">
                 <button
@@ -361,15 +360,15 @@
       <!-- Chat Tab -->
       <div v-if="activeTab === 'chat'">
         <div class="flex justify-between items-center mb-6">
-          <h2 class="text-xl font-semibold text-gray-900">Live Chat Support</h2>
+          <h2 class="text-xl font-semibold text-slate-100">Live Chat Support</h2>
           <div class="flex items-center gap-4">
             <div class="flex items-center gap-2">
-              <span class="text-sm text-gray-600">Status:</span>
+              <span class="text-sm text-slate-400">Status:</span>
               <button
                 @click="toggleOnlineStatus"
                 :class="[
                   'px-4 py-2 rounded-lg text-sm font-semibold transition-colors',
-                  adminOnline ? 'bg-green-100 text-green-800 hover:bg-green-200' : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
+                  adminOnline ? 'bg-green-100 text-green-800 hover:bg-green-200' : 'bg-slate-800 text-slate-300 hover:bg-slate-900/90'
                 ]"
               >
                 {{ adminOnline ? 'Online' : 'Offline' }}
@@ -390,12 +389,12 @@
                   @click="selectSession(session)"
                   :class="[
                     'p-3 rounded-lg cursor-pointer transition-colors',
-                    selectedSession?.id === session.id ? 'bg-primary-100 border border-primary-300' : 'bg-gray-50 hover:bg-gray-100'
+                    selectedSession?.id === session.id ? 'bg-primary-100 border border-primary-300' : 'bg-slate-950 hover:bg-slate-800'
                   ]"
                 >
                   <p class="text-sm font-medium">{{ session.userName || 'Anonymous User' }}</p>
-                  <p class="text-xs text-gray-500">{{ session.lastMessageTime }}</p>
-                  <p class="text-xs text-gray-600 truncate">{{ session.lastMessage }}</p>
+                  <p class="text-xs text-slate-400">{{ session.lastMessageTime }}</p>
+                  <p class="text-xs text-slate-400 truncate">{{ session.lastMessage }}</p>
                 </div>
               </div>
             </div>
@@ -406,10 +405,10 @@
             <div v-if="selectedSession" class="card p-4">
               <div class="flex items-center justify-between mb-4">
                 <h3 class="text-lg font-semibold">{{ selectedSession.userName || 'Anonymous User' }}</h3>
-                <span class="text-xs text-gray-500">{{ selectedSession.id }}</span>
+                <span class="text-xs text-slate-400">{{ selectedSession.id }}</span>
               </div>
 
-              <div ref="chatMessagesContainer" class="h-96 overflow-y-auto mb-4 p-4 bg-gray-50 rounded-lg space-y-3">
+              <div ref="chatMessagesContainer" class="h-96 overflow-y-auto mb-4 p-4 bg-slate-950 rounded-lg space-y-3">
                 <div
                   v-for="message in selectedSession.messages"
                   :key="message.id"
@@ -421,11 +420,11 @@
                   <div
                     :class="[
                       'max-w-xs px-4 py-2 rounded-lg text-sm',
-                      message.isUser ? 'bg-primary-600 text-white' : 'bg-white text-gray-800'
+                      message.isUser ? 'bg-primary-600 text-white' : 'bg-slate-900 text-slate-100'
                     ]"
                   >
                     <p>{{ message.text }}</p>
-                    <p :class="['text-xs mt-1', message.isUser ? 'text-primary-100' : 'text-gray-500']">
+                    <p :class="['text-xs mt-1', message.isUser ? 'text-primary-100' : 'text-slate-400']">
                       {{ message.time }}
                     </p>
                   </div>
@@ -437,7 +436,7 @@
                   v-model="adminMessage"
                   type="text"
                   placeholder="Type your response..."
-                  class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+                  class="flex-1 px-4 py-2 border border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
                 />
                 <button
                   type="submit"
@@ -448,7 +447,7 @@
                 </button>
               </form>
             </div>
-            <div v-else class="card p-8 text-center text-gray-500">
+            <div v-else class="card p-8 text-center text-slate-400">
               <p>Select a chat session to start responding</p>
             </div>
           </div>
@@ -456,11 +455,11 @@
       </div>
 
       <!-- Add House Modal -->
-      <div v-if="showAddHouseModal" class="fixed inset-0 bg-white flex items-center justify-center z-50">
-        <div class="bg-white rounded-lg p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+      <div v-if="showAddHouseModal" class="fixed inset-0 bg-slate-950/95 flex items-center justify-center z-50">
+        <div class="section-surface rounded-3xl p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
           <div class="flex justify-between items-center mb-6">
             <h3 class="text-xl font-semibold">{{ editingHouse ? 'Edit House' : 'Add New House' }}</h3>
-            <button @click="showAddHouseModal = false" class="text-gray-500 hover:text-gray-700">
+            <button @click="showAddHouseModal = false" class="text-slate-400 hover:text-slate-300">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
               </svg>
@@ -470,7 +469,7 @@
           <form @submit.prevent="addHouse" class="space-y-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-2">Title *</label>
+                  <label class="block text-sm font-medium text-slate-300 mb-2">Title *</label>
                   <input
                     v-model="newHouse.title"
                     type="text"
@@ -480,7 +479,7 @@
                   />
                 </div>
                 <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-2">Location *</label>
+                  <label class="block text-sm font-medium text-slate-300 mb-2">Location *</label>
                   <input
                     v-model="newHouse.location"
                     type="text"
@@ -493,7 +492,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-2">Latitude (Optional)</label>
+                  <label class="block text-sm font-medium text-slate-300 mb-2">Latitude (Optional)</label>
                   <input
                     v-model="newHouse.latitude"
                     type="number"
@@ -503,7 +502,7 @@
                   />
                 </div>
                 <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-2">Longitude (Optional)</label>
+                  <label class="block text-sm font-medium text-slate-300 mb-2">Longitude (Optional)</label>
                   <input
                     v-model="newHouse.longitude"
                     type="number"
@@ -515,7 +514,7 @@
             </div>
 
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">Description</label>
+              <label class="block text-sm font-medium text-slate-300 mb-2">Description</label>
               <textarea
                 v-model="newHouse.description"
                 rows="3"
@@ -526,7 +525,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
                <div>
-                 <label class="block text-sm font-medium text-gray-700 mb-2">House Type *</label>
+                 <label class="block text-sm font-medium text-slate-300 mb-2">House Type *</label>
                  <select v-model="newHouse.houseType" required class="input-field">
                    <option value="">Select Type</option>
                    <option value="Single Room">Single Room</option>
@@ -537,7 +536,7 @@
                  </select>
                </div>
                <div>
-                 <label class="block text-sm font-medium text-gray-700 mb-2">Rent (KSh) *</label>
+                 <label class="block text-sm font-medium text-slate-300 mb-2">Rent (KSh) *</label>
                  <input
                    v-model="newHouse.rent"
                    type="number"
@@ -547,7 +546,7 @@
                  />
                </div>
                <div>
-                 <label class="block text-sm font-medium text-gray-700 mb-2">Bedrooms</label>
+                 <label class="block text-sm font-medium text-slate-300 mb-2">Bedrooms</label>
                  <input
                    v-model="newHouse.bedrooms"
                    type="number"
@@ -556,7 +555,7 @@
                  />
                </div>
                <div>
-                 <label class="block text-sm font-medium text-gray-700 mb-2">Bathrooms</label>
+                 <label class="block text-sm font-medium text-slate-300 mb-2">Bathrooms</label>
                  <input
                    v-model="newHouse.bathrooms"
                    type="number"
@@ -567,7 +566,7 @@
              </div>
 
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">Amenities</label>
+              <label class="block text-sm font-medium text-slate-300 mb-2">Amenities</label>
               <input
                 v-model="newHouse.amenities"
                 type="text"
@@ -577,7 +576,7 @@
             </div>
 
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
+              <label class="block text-sm font-medium text-slate-300 mb-2">Status</label>
               <select v-model="newHouse.status" class="input-field">
                 <option value="Available">Available</option>
                 <option value="Occupied">Occupied</option>
@@ -585,7 +584,7 @@
             </div>
 
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">Images *</label>
+              <label class="block text-sm font-medium text-slate-300 mb-2">Images *</label>
               <input
                 type="file"
                 multiple
@@ -593,21 +592,21 @@
                 @change="handleImageSelection"
                 class="input-field"
               />
-              <p class="text-xs text-gray-600 mt-1">Select multiple images (max 10). Files will be uploaded to Cloudinary.</p>
+              <p class="text-xs text-slate-400 mt-1">Select multiple images (max 10). Files will be uploaded to Cloudinary.</p>
               <div v-if="selectedImageFiles.length > 0" class="mt-2">
                 <p class="text-sm text-green-600">{{ selectedImageFiles.length }} image(s) selected</p>
               </div>
             </div>
 
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">Video (Optional)</label>
+              <label class="block text-sm font-medium text-slate-300 mb-2">Video (Optional)</label>
               <input
                 type="file"
                 accept="video/*"
                 @change="handleVideoSelection"
                 class="input-field"
               />
-              <p class="text-xs text-gray-600 mt-1">Upload a short video tour (max 50MB)</p>
+              <p class="text-xs text-slate-400 mt-1">Upload a short video tour (max 50MB)</p>
               <div v-if="selectedVideoFile" class="mt-2">
                 <p class="text-sm text-green-600">Video selected: {{ selectedVideoFile.name }}</p>
               </div>
@@ -673,7 +672,7 @@ const newHouse = ref({
   bedrooms: '',
   bathrooms: '',
   amenities: '',
-  status: 'Available',
+  status: 'free',
   latitude: '',
   longitude: ''
 });
@@ -1102,7 +1101,7 @@ const addHouse = async () => {
       bedrooms: '',
       bathrooms: '',
       amenities: '',
-      status: 'Available'
+      status: 'free'
     };
     houseImages.value = [];
     houseVideo.value = null;
@@ -1128,7 +1127,7 @@ const getMockHouses = () => [
     location: 'Milimani',
     rent: 15000,
     images: ['https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=500'],
-    status: 'Available'
+    status: 'free'
   }
 ];
 

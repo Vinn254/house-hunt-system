@@ -1,10 +1,10 @@
 <template>
-  <div class="min-h-screen bg-gray-50 py-8">
+  <div class="min-h-screen bg-slate-950 py-8">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Header -->
       <div class="mb-8">
-        <h1 class="text-3xl font-bold text-gray-900 mb-2">Relocation Service</h1>
-        <p class="text-gray-600">Seamless moving services for your new home</p>
+        <h1 class="text-3xl font-bold text-slate-100 mb-2">Relocation Service</h1>
+        <p class="text-slate-400">Seamless moving services for your new home</p>
       </div>
 
       <!-- Service Info -->
@@ -16,8 +16,8 @@
             </svg>
           </div>
           <div>
-            <h2 class="text-xl font-semibold text-gray-900 mb-2">Professional Moving Services</h2>
-            <p class="text-gray-600">
+            <h2 class="text-xl font-semibold text-slate-100 mb-2">Professional Moving Services</h2>
+            <p class="text-slate-400">
               We provide reliable and affordable relocation services to help you move into your new home. 
               Our experienced team handles everything from packing to transportation.
             </p>
@@ -29,31 +29,31 @@
             <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
             </svg>
-            <span class="text-sm text-gray-700">Professional Movers</span>
+            <span class="text-sm text-slate-300">Professional Movers</span>
           </div>
           <div class="flex items-center gap-3">
             <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
             </svg>
-            <span class="text-sm text-gray-700">Insured Transport</span>
+            <span class="text-sm text-slate-300">Insured Transport</span>
           </div>
           <div class="flex items-center gap-3">
             <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
             </svg>
-            <span class="text-sm text-gray-700">Affordable Rates</span>
+            <span class="text-sm text-slate-300">Affordable Rates</span>
           </div>
         </div>
       </div>
 
       <!-- Request Form -->
       <div class="card p-6">
-        <h2 class="text-xl font-semibold text-gray-900 mb-6">Request Relocation Service</h2>
+        <h2 class="text-xl font-semibold text-slate-100 mb-6">Request Relocation Service</h2>
 
         <form @submit.prevent="submitRequest" class="space-y-6">
           <!-- Pickup Location -->
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">
+            <label class="block text-sm font-medium text-slate-300 mb-2">
               Pickup Location
             </label>
             <div class="flex gap-2">
@@ -78,14 +78,14 @@
                 {{ gettingLocation ? 'Getting...' : 'Pin' }}
               </button>
             </div>
-            <p class="mt-1 text-xs text-gray-500">
+            <p class="mt-1 text-xs text-slate-400">
               {{ formData.pickupCoords ? '📍 Location pinned successfully' : 'Click Pin to use your current location' }}
             </p>
           </div>
 
           <!-- Destination Location -->
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">
+            <label class="block text-sm font-medium text-slate-300 mb-2">
               Destination Location
             </label>
             <input
@@ -100,7 +100,7 @@
 
           <!-- House Size -->
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">
+            <label class="block text-sm font-medium text-slate-300 mb-2">
               House Size
             </label>
             <select v-model="formData.houseSize" required class="input-field" @change="calculateEstimate">
@@ -115,7 +115,7 @@
 
           <!-- Distance -->
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">
+            <label class="block text-sm font-medium text-slate-300 mb-2">
               Distance (km)
             </label>
             <input
@@ -128,14 +128,14 @@
               class="input-field"
               @input="calculateEstimate"
             />
-            <p class="mt-1 text-xs text-gray-500">
+            <p class="mt-1 text-xs text-slate-400">
               Enter the estimated distance between pickup and destination locations
             </p>
           </div>
 
           <!-- Moving Date -->
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">
+            <label class="block text-sm font-medium text-slate-300 mb-2">
               Preferred Moving Date
             </label>
             <input 
@@ -149,7 +149,7 @@
 
           <!-- Additional Items -->
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">
+            <label class="block text-sm font-medium text-slate-300 mb-2">
               Additional Items/Notes
             </label>
             <textarea 
@@ -161,17 +161,17 @@
           </div>
 
           <!-- Estimated Cost -->
-          <div v-if="estimatedCost > 0" class="bg-primary-50 border border-primary-200 rounded-lg p-4">
+          <div v-if="estimatedCost > 0" class="bg-primary-900/20 border border-primary-700 rounded-lg p-4">
             <div class="flex items-center justify-between">
               <div>
-                <p class="text-sm text-gray-600 mb-1">Estimated Cost</p>
+                <p class="text-sm text-slate-400 mb-1">Estimated Cost</p>
                 <p class="text-2xl font-bold text-primary-600">KSh {{ estimatedCost.toLocaleString() }}</p>
               </div>
               <svg class="w-12 h-12 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
               </svg>
             </div>
-            <p class="text-xs text-gray-600 mt-2">
+            <p class="text-xs text-slate-400 mt-2">
               * Final cost may vary based on actual items and conditions
             </p>
           </div>
@@ -198,13 +198,13 @@
 
       <!-- My Relocation Requests -->
       <div class="mt-8">
-        <h2 class="text-xl font-semibold text-gray-900 mb-4">My Relocation Requests</h2>
+        <h2 class="text-xl font-semibold text-slate-100 mb-4">My Relocation Requests</h2>
         
         <div v-if="requests.length === 0" class="card p-8 text-center">
-          <svg class="mx-auto h-16 w-16 text-gray-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="mx-auto h-16 w-16 text-slate-500 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
           </svg>
-          <p class="text-gray-600">No relocation requests yet</p>
+          <p class="text-slate-400">No relocation requests yet</p>
         </div>
 
         <div v-else class="space-y-4">
@@ -234,26 +234,26 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
               <div>
-                <p class="text-gray-600">From:</p>
-                <p class="font-medium text-gray-900">{{ request.pickupLocation }}</p>
+                <p class="text-slate-400">From:</p>
+                <p class="font-medium text-slate-100">{{ request.pickupLocation }}</p>
               </div>
               <div>
-                <p class="text-gray-600">To:</p>
-                <p class="font-medium text-gray-900">{{ request.destinationLocation }}</p>
+                <p class="text-slate-400">To:</p>
+                <p class="font-medium text-slate-100">{{ request.destinationLocation }}</p>
               </div>
               <div>
-                <p class="text-gray-600">Moving Date:</p>
-                <p class="font-medium text-gray-900">{{ formatDate(request.movingDate) }}</p>
+                <p class="text-slate-400">Moving Date:</p>
+                <p class="font-medium text-slate-100">{{ formatDate(request.movingDate) }}</p>
               </div>
               <div>
-                <p class="text-gray-600">House Size:</p>
-                <p class="font-medium text-gray-900">{{ formatHouseSize(request.houseSize) }}</p>
+                <p class="text-slate-400">House Size:</p>
+                <p class="font-medium text-slate-100">{{ formatHouseSize(request.houseSize) }}</p>
               </div>
             </div>
 
-            <div v-if="request.notes" class="mt-4 pt-4 border-t border-gray-200">
-              <p class="text-sm text-gray-600">Notes:</p>
-              <p class="text-sm text-gray-900">{{ request.notes }}</p>
+            <div v-if="request.notes" class="mt-4 pt-4 border-t border-slate-800">
+              <p class="text-sm text-slate-400">Notes:</p>
+              <p class="text-sm text-slate-100">{{ request.notes }}</p>
             </div>
           </div>
         </div>

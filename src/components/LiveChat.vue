@@ -4,7 +4,7 @@
     <button
       v-if="!showChat"
       @click="openChat"
-      class="flex items-center justify-center w-14 h-14 bg-primary-600 hover:bg-primary-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110"
+      class="flex items-center justify-center w-14 h-14 bg-accent-500 hover:bg-accent-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110"
       title="Live Chat Support"
     >
       <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -24,9 +24,9 @@
       leave-from-class="opacity-100 translate-y-0"
       leave-to-class="opacity-0 translate-y-4"
     >
-      <div v-if="showChat" class="bg-white rounded-lg shadow-2xl w-72 sm:w-80 flex flex-col" style="height: 400px;">
+      <div v-if="showChat" class="bg-slate-950 rounded-[1.5rem] shadow-2xl border border-slate-800 w-72 sm:w-80 flex flex-col" style="height: 400px;">
         <!-- Chat Header -->
-        <div class="bg-primary-600 text-white p-4 rounded-t-lg flex items-center justify-between">
+        <div class="bg-slate-900 text-white p-4 rounded-t-[1.5rem] flex items-center justify-between border-b border-slate-800">
           <div class="flex items-center space-x-3">
             <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center">
               <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -35,10 +35,10 @@
             </div>
             <div>
               <h3 class="font-semibold">Support Team</h3>
-              <p class="text-xs text-primary-100">{{ adminOnline ? 'Online • Typically replies instantly' : 'Offline • We\'ll respond when available' }}</p>
+              <p class="text-xs text-accent-100">{{ adminOnline ? 'Online • Typically replies instantly' : 'Offline • We\'ll respond when available' }}</p>
             </div>
           </div>
-          <button @click="showChat = false" class="text-white hover:text-primary-100">
+          <button @click="showChat = false" class="text-white hover:text-accent-100">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
             </svg>
@@ -46,20 +46,20 @@
         </div>
 
         <!-- Chat Messages -->
-        <div ref="messagesContainer" class="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
+        <div ref="messagesContainer" class="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-950">
           <!-- Messages -->
           <div v-for="message in messages" :key="message.id" :class="message.isUser ? 'flex justify-end' : 'flex items-start space-x-2'">
-            <div v-if="!message.isUser" class="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center flex-shrink-0">
+            <div v-if="!message.isUser" class="w-8 h-8 bg-accent-500 rounded-full flex items-center justify-center flex-shrink-0">
               <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
               </svg>
             </div>
             <div :class="[
               'rounded-lg p-3 shadow-sm max-w-xs',
-              message.isUser ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-900'
+              message.isUser ? 'bg-accent-500 text-slate-950' : 'bg-slate-900/95 text-slate-100'
             ]">
               <p class="text-sm">{{ message.text }}</p>
-              <p :class="['text-xs mt-1', message.isUser ? 'text-blue-100' : 'text-gray-500']">
+              <p :class="['text-xs mt-1', message.isUser ? 'text-accent-100' : 'text-slate-400']">
                 {{ message.time }}
               </p>
             </div>
@@ -67,34 +67,34 @@
 
           <!-- Typing Indicator -->
           <div v-if="isTyping" class="flex items-start space-x-2">
-            <div class="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center flex-shrink-0">
+            <div class="w-8 h-8 bg-accent-500 rounded-full flex items-center justify-center flex-shrink-0">
               <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
               </svg>
             </div>
-            <div class="bg-white rounded-lg p-3 shadow-sm">
+            <div class="bg-slate-900/95 rounded-lg p-3 shadow-sm">
               <div class="flex space-x-1">
-                <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0ms"></div>
-                <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 150ms"></div>
-                <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 300ms"></div>
+                <div class="w-2 h-2 bg-slate-600 rounded-full animate-bounce" style="animation-delay: 0ms"></div>
+                <div class="w-2 h-2 bg-slate-600 rounded-full animate-bounce" style="animation-delay: 150ms"></div>
+                <div class="w-2 h-2 bg-slate-600 rounded-full animate-bounce" style="animation-delay: 300ms"></div>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Chat Input -->
-        <div class="p-4 border-t border-gray-200 bg-white rounded-b-lg">
+        <div class="p-4 border-t border-slate-800 bg-slate-950 rounded-b-[1.5rem]">
           <form @submit.prevent="sendMessage" class="flex space-x-2">
             <input 
               v-model="newMessage"
               type="text"
               placeholder="Type your message..."
-              class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+              class="input-field"
             />
             <button 
               type="submit"
               :disabled="!newMessage.trim()"
-              class="bg-primary-600 hover:bg-primary-700 text-white p-2 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              class="bg-accent-500 hover:bg-accent-600 text-slate-950 p-2 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>

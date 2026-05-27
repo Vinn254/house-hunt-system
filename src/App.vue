@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="min-h-screen bg-gradient-to-br from-sky-100 via-white to-slate-100 text-slate-900 flex flex-col">
+  <div id="app" class="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
     <Navbar />
     <main class="flex-1">
       <router-view />

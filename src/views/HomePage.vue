@@ -1,33 +1,33 @@
 <template>
-  <div class="min-h-screen bg-gray-50">
+  <div class="min-h-screen bg-slate-950">
     <!-- Hero Section -->
     <section class="relative overflow-hidden py-20">
       <div class="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 opacity-95"></div>
       <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div class="space-y-8">
-            <div class="inline-flex items-center gap-2 rounded-full border border-sky-300/20 bg-sky-300/10 px-4 py-2 text-sm text-sky-100">
+            <div class="inline-flex items-center gap-2 rounded-full border border-accent-300/20 bg-accent-500/10 px-4 py-2 text-sm text-accent-100">
               <span class="font-semibold">Kisumu House Hunt</span>
-              <span class="text-sky-200">Best in Kisumu</span>
+              <span class="text-accent-200">Best in Kisumu</span>
             </div>
             <h1 class="text-4xl md:text-6xl font-bold leading-tight text-white">
               Discover Your Dream Home
-              <span class="block text-sky-300 mt-2">Verified. Trusted. Hassle-Free.</span>
+              <span class="block text-accent-300 mt-2">Verified. Trusted. Hassle-Free.</span>
             </h1>
             <p class="text-lg md:text-xl text-slate-200 max-w-xl">
               Kisumu's most reliable house hunting platform connecting you with genuine vacant properties.
             </p>
             <div class="grid gap-3 sm:grid-cols-2">
-              <div class="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-lg shadow-slate-950/20">
+              <div class="rounded-3xl border border-slate-800 bg-slate-900/90 p-5 shadow-2xl shadow-slate-950/20">
                 <p class="text-slate-100 font-semibold">✓ 100% Verified Listings</p>
               </div>
-              <div class="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-lg shadow-slate-950/20">
+              <div class="rounded-3xl border border-slate-800 bg-slate-900/90 p-5 shadow-2xl shadow-slate-950/20">
                 <p class="text-slate-100 font-semibold">✓ No Fake Brokers</p>
               </div>
-              <div class="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-lg shadow-slate-950/20">
+              <div class="rounded-3xl border border-slate-800 bg-slate-900/90 p-5 shadow-2xl shadow-slate-950/20">
                 <p class="text-slate-100 font-semibold">✓ Transparent Pricing</p>
               </div>
-              <div class="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-lg shadow-slate-950/20">
+              <div class="rounded-3xl border border-slate-800 bg-slate-900/90 p-5 shadow-2xl shadow-slate-950/20">
                 <p class="text-slate-100 font-semibold">✓ Instant Booking</p>
               </div>
             </div>
@@ -35,7 +35,7 @@
               <button class="btn-primary w-full sm:w-auto py-4 px-8 text-lg">
                 Browse Houses Now
               </button>
-              <button class="w-full sm:w-auto rounded-lg border border-white/20 bg-white/10 py-4 px-8 text-lg font-semibold text-white transition hover:bg-white/20">
+              <button class="w-full sm:w-auto rounded-3xl border border-slate-700 bg-slate-900/80 py-4 px-8 text-lg font-semibold text-slate-100 transition hover:bg-slate-900">
                 How It Works
               </button>
             </div>
@@ -67,7 +67,7 @@
                 </div>
               </div>
               <div class="rounded-3xl border border-white/10 bg-slate-900/90 p-5 shadow-2xl shadow-slate-950/30 backdrop-blur">
-                <p class="text-sm uppercase tracking-[0.2em] text-sky-300">Why clients love us</p>
+                <p class="text-sm uppercase tracking-[0.2em] text-accent-300">Why clients love us</p>
                 <div class="mt-4 grid gap-3">
                   <div class="rounded-3xl bg-slate-950/90 px-4 py-3">
                     <p class="text-slate-200">Fast booking</p>
@@ -83,7 +83,7 @@
 
             <div class="absolute -bottom-8 left-6 right-6 rounded-3xl border border-white/10 bg-slate-900/90 p-6 shadow-2xl shadow-slate-950/40 backdrop-blur">
               <div class="flex items-center gap-4">
-                <span class="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-sky-500/15 text-sky-200">KSM</span>
+                <span class="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-accent-500/15 text-accent-100">KSM</span>
                 <div>
                   <p class="text-sm uppercase tracking-[0.2em] text-slate-400">Featured</p>
                   <p class="text-lg font-semibold text-white">Kisumu-ready houses with easy viewing</p>
@@ -96,11 +96,11 @@
     </section>
 
        <!-- Filters Section -->
-       <section class="bg-white shadow-md -mt-8 relative z-10">
+       <section class="bg-slate-950/95 shadow-2xl border border-slate-800 -mt-8 relative z-10">
          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
              <div>
-               <label class="block text-sm font-medium text-gray-700 mb-2">Location</label>
+               <label class="block text-sm font-medium text-slate-300 mb-2">Location</label>
                <select v-model="filters.location" class="input-field">
                  <option value="">All Locations</option>
                  <!-- Areas & Estates in Kisumu City -->
@@ -178,7 +178,7 @@
           </div>
           
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">House Type</label>
+            <label class="block text-sm font-medium text-slate-300 mb-2">House Type</label>
             <select v-model="filters.houseType" class="input-field">
               <option value="">All Types</option>
               <option value="Single Room">Single Room</option>
@@ -190,7 +190,7 @@
           </div>
           
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Min Rent (KSh)</label>
+            <label class="block text-sm font-medium text-slate-300 mb-2">Min Rent (KSh)</label>
             <input 
               v-model.number="filters.minRent" 
               type="number" 
@@ -200,7 +200,7 @@
           </div>
           
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Max Rent (KSh)</label>
+            <label class="block text-sm font-medium text-slate-300 mb-2">Max Rent (KSh)</label>
             <input 
               v-model.number="filters.maxRent" 
               type="number" 
@@ -215,20 +215,20 @@
      <!-- Houses Grid -->
      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
        <div class="flex justify-between items-center mb-6">
-         <h2 class="text-2xl font-bold text-gray-900">
+         <h2 class="text-2xl font-bold text-slate-100">
            Available Houses
-           <span class="text-primary-600">({{ filteredHouses.length }})</span>
+           <span class="text-accent-300">({{ filteredHouses.length }})</span>
          </h2>
        </div>
 
        <!-- Loading State -->
        <div v-if="loading" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
          <div v-for="n in 6" :key="n" class="card animate-pulse">
-           <div class="h-48 bg-gray-300"></div>
+           <div class="h-48 bg-slate-700"></div>
            <div class="p-4 space-y-3">
-             <div class="h-4 bg-gray-300 rounded w-3/4"></div>
-             <div class="h-4 bg-gray-300 rounded w-1/2"></div>
-             <div class="h-4 bg-gray-300 rounded w-full"></div>
+             <div class="h-4 bg-slate-700 rounded w-3/4"></div>
+             <div class="h-4 bg-slate-700 rounded w-1/2"></div>
+             <div class="h-4 bg-slate-700 rounded w-full"></div>
            </div>
          </div>
        </div>
@@ -248,40 +248,34 @@
                class="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
                loading="lazy"
              />
-             <div class="absolute top-2 right-2 bg-primary-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+             <div class="absolute top-2 right-2 bg-accent-500 text-slate-950 px-3 py-1 rounded-full text-sm font-semibold shadow-md">
                KSh {{ house.rent.toLocaleString() }}/mo
              </div>
-             <div class="absolute top-2 left-2 bg-white px-3 py-1 rounded-full text-xs font-semibold text-gray-700">
-               {{ house.houseType }}
-             </div>
            </div>
-           
            <div class="p-4">
-             <h3 class="text-lg font-semibold text-gray-900 mb-2">{{ house.title }}</h3>
-             <div class="flex items-center text-gray-600 mb-3">
-               <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+             <h3 class="text-lg font-semibold text-slate-100 mb-2">{{ house.title }}</h3>
+             <div class="flex items-center text-slate-400 mb-3">
+               <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                </svg>
-               <span class="text-sm">{{ house.location }}</span>
+               <span class="text-sm text-slate-300">{{ house.location }}</span>
              </div>
-             
              <div class="flex flex-wrap gap-2 mb-4">
                <span 
                  v-for="amenity in house.amenities.slice(0, 3)" 
                  :key="amenity"
-                 class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded"
+                 class="text-xs bg-slate-800/90 text-slate-300 px-2 py-1 rounded"
                >
                  {{ amenity }}
                </span>
                <span 
                  v-if="house.amenities.length > 3"
-                 class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded"
+                 class="text-xs bg-slate-800/90 text-slate-300 px-2 py-1 rounded"
                >
                  +{{ house.amenities.length - 3 }} more
                </span>
              </div>
-             
              <button class="w-full btn-primary">
                View Details
              </button>
@@ -291,50 +285,50 @@
 
        <!-- Empty State -->
        <div v-else class="text-center py-12">
-         <svg class="mx-auto h-24 w-24 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+         <svg class="mx-auto h-24 w-24 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 011-1h2a1 1 0 001 1m-6 0h6"></path>
          </svg>
-         <h3 class="mt-4 text-lg font-medium text-gray-900">No houses found</h3>
-         <p class="mt-2 text-gray-500">Try adjusting your filters to see more properties in Kisumu.</p>
+         <h3 class="mt-4 text-lg font-medium text-slate-100">No houses found</h3>
+         <p class="mt-2 text-slate-400">Try adjusting your filters to see more properties in Kisumu.</p>
        </div>
      </section>
 
      <!-- Features Section -->
-     <section class="bg-white py-16">
+     <section class="bg-slate-950/95 py-16 border-t border-slate-800">
        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-         <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-4">Why Thousands Trust Lakeside House Finders</h2>
-         <p class="center text-gray-600 mb-12 max-w-2xl mx-auto">
+         <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-100 mb-4">Why Thousands Trust Lakeside House Finders</h2>
+         <p class="text-slate-400 mb-12 max-w-2xl mx-auto text-center">
            We've revolutionized house hunting in Kisumu by eliminating the frustrations of fake listings, unreliable brokers, and endless physical searches.
          </p>
          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-           <div class="text-center p-6 hover:shadow-lg transition-shadow rounded-lg">
-             <div class="w-16 h-16 bg-gradient-to-br from-primary-100 to-lime-100 rounded-full flex items-center justify-center mx-auto mb-4">
-               <svg class="w-8 h-8 text-primary-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+           <div class="text-center p-6 hover:shadow-xl transition-shadow rounded-3xl border border-slate-800 bg-slate-900/90">
+             <div class="w-16 h-16 bg-gradient-to-br from-primary-600 to-primary-800 rounded-full flex items-center justify-center mx-auto mb-4">
+               <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                </svg>
              </div>
-             <h3 class="text-xl font-semibold text-gray-900 mb-3">100% Verified Properties</h3>
-             <p class="text-gray-600">Every single house is physically inspected and verified by our professional team before listing. Zero tolerance for fake listings.</p>
+             <h3 class="text-xl font-semibold text-slate-100 mb-3">100% Verified Properties</h3>
+             <p class="text-slate-400">Every single house is physically inspected and verified by our professional team before listing. Zero tolerance for fake listings.</p>
            </div>
            
-           <div class="text-center p-6 hover:shadow-lg transition-shadow rounded-lg">
-             <div class="w-16 h-16 bg-gradient-to-br from-primary-100 to-lime-100 rounded-full flex items-center justify-center mx-auto mb-4">
-               <svg class="w-8 h-8 text-primary-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+           <div class="text-center p-6 hover:shadow-xl transition-shadow rounded-3xl border border-slate-800 bg-slate-900/90">
+             <div class="w-16 h-16 bg-gradient-to-br from-primary-600 to-primary-800 rounded-full flex items-center justify-center mx-auto mb-4">
+               <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                </svg>
              </div>
-             <h3 class="text-xl font-semibold text-gray-900 mb-3">Instant Online Booking</h3>
-             <p class="text-gray-600">Schedule house viewings in seconds. Pay securely via M-Pesa or on-site. Get confirmed appointments without endless phone calls.</p>
+             <h3 class="text-xl font-semibold text-slate-100 mb-3">Instant Online Booking</h3>
+             <p class="text-slate-400">Schedule house viewings in seconds. Pay securely via M-Pesa or on-site. Get confirmed appointments without endless phone calls.</p>
            </div>
            
-           <div class="text-center p-6 hover:shadow-lg transition-shadow rounded-lg">
-             <div class="w-16 h-16 bg-gradient-to-br from-primary-100 to-lime-100 rounded-full flex items-center justify-center mx-auto mb-4">
-               <svg class="w-8 h-8 text-primary-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+           <div class="text-center p-6 hover:shadow-xl transition-shadow rounded-3xl border border-slate-800 bg-slate-900/90">
+             <div class="w-16 h-16 bg-gradient-to-br from-primary-600 to-primary-800 rounded-full flex items-center justify-center mx-auto mb-4">
+               <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110-4 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
                </svg>
              </div>
-             <h3 class="text-xl font-semibold text-gray-900 mb-3">Seamless Relocation</h3>
-             <p class="text-gray-600">Found your perfect home? We'll help you move! Professional movers, transparent pricing, and insured transport all in one platform.</p>
+             <h3 class="text-xl font-semibold text-slate-100 mb-3">Seamless Relocation</h3>
+             <p class="text-slate-400">Found your perfect home? We'll help you move! Professional movers, transparent pricing, and insured transport all in one platform.</p>
            </div>
          </div>
        </div>
@@ -382,7 +376,7 @@ const filteredHouses = computed(() => {
   onMounted(() => {
     const housesQuery = query(
       collection(db, 'houses'),
-      where('status', 'in', ['Available', 'Booked'])
+      where('status', 'in', ['free', 'booked'])
     );
 
   onSnapshot(housesQuery, (snapshot) => {
@@ -413,7 +407,7 @@ const getMockHouses = () => [
     rent: 15000,
     images: ['/img1.PNG'],
     amenities: ['WiFi', 'Water 24/7', 'Parking', 'Security'],
-    status: 'Available',
+    status: 'free',
     verified: true
   },
   {
@@ -424,7 +418,7 @@ const getMockHouses = () => [
     rent: 45000,
     images: ['/img2.PNG'],
     amenities: ['WiFi', 'Gym', 'Swimming Pool', 'Parking'],
-    status: 'Booked', // This house is booked
+    status: 'booked', // This house is booked
     verified: true
   },
   {
@@ -435,7 +429,7 @@ const getMockHouses = () => [
     rent: 8000,
     images: ['/img3.PNG'],
     amenities: ['Water 24/7', 'Security'],
-    status: 'Available',
+    status: 'free',
     verified: true
   },
   {
@@ -446,7 +440,7 @@ const getMockHouses = () => [
     rent: 85000,
     images: ['/img4.PNG'],
     amenities: ['WiFi', 'Gym', 'Swimming Pool', 'Parking', 'Garden'],
-    status: 'Taken', // This house is taken (paid for)
+    status: 'taken', // This house is taken (paid for)
     verified: true
   },
   {
@@ -457,7 +451,7 @@ const getMockHouses = () => [
     rent: 25000,
     images: ['/img5.PNG'],
     amenities: ['WiFi', 'Water 24/7', 'Parking'],
-    status: 'Available',
+    status: 'free',
     verified: true
   },
   {
@@ -468,7 +462,7 @@ const getMockHouses = () => [
     rent: 12000,
     images: ['/img6.PNG'],
     amenities: ['WiFi', 'Water 24/7', 'Security'],
-    status: 'Available',
+    status: 'free',
     verified: true
   }
 ];

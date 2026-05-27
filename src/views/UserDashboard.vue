@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gray-50 py-8">
+  <div class="min-h-screen bg-slate-950 py-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Welcome Section -->
       <div class="bg-gradient-to-r from-primary-600 to-primary-700 rounded-2xl p-8 mb-8 text-white">
@@ -16,8 +16,8 @@
         <div class="card p-6">
           <div class="flex items-center justify-between">
             <div>
-              <p class="text-sm text-gray-600 mb-1">Active Bookings</p>
-              <p class="text-3xl font-bold text-gray-900">{{ activeBookings.length }}</p>
+              <p class="text-sm text-slate-400 mb-1">Active Bookings</p>
+              <p class="text-3xl font-bold text-slate-100">{{ activeBookings.length }}</p>
             </div>
             <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
               <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -30,8 +30,8 @@
         <div class="card p-6">
           <div class="flex items-center justify-between">
             <div>
-              <p class="text-sm text-gray-600 mb-1">Saved Houses</p>
-              <p class="text-3xl font-bold text-gray-900">{{ savedHouses.length }}</p>
+              <p class="text-sm text-slate-400 mb-1">Saved Houses</p>
+              <p class="text-3xl font-bold text-slate-100">{{ savedHouses.length }}</p>
             </div>
             <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
               <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -44,8 +44,8 @@
         <div class="card p-6">
           <div class="flex items-center justify-between">
             <div>
-              <p class="text-sm text-gray-600 mb-1">Completed Views</p>
-              <p class="text-3xl font-bold text-gray-900">{{ completedBookings.length }}</p>
+              <p class="text-sm text-slate-400 mb-1">Completed Views</p>
+              <p class="text-3xl font-bold text-slate-100">{{ completedBookings.length }}</p>
             </div>
             <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
               <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -58,14 +58,14 @@
 
       <!-- Tabs -->
       <div class="mb-6">
-        <div class="border-b border-gray-200">
+        <div class="border-b border-slate-800">
           <nav class="-mb-px flex space-x-8">
             <button
               @click="activeTab = 'bookings'"
               :class="[
                 activeTab === 'bookings'
                   ? 'border-primary-600 text-primary-600'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300',
+                  : 'border-transparent text-slate-400 hover:text-slate-300 hover:border-slate-700',
                 'whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm'
               ]"
             >
@@ -76,7 +76,7 @@
               :class="[
                 activeTab === 'saved'
                   ? 'border-primary-600 text-primary-600'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300',
+                  : 'border-transparent text-slate-400 hover:text-slate-300 hover:border-slate-700',
                 'whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm'
               ]"
             >
@@ -90,17 +90,17 @@
       <div v-if="activeTab === 'bookings'">
         <div v-if="loading" class="space-y-4">
           <div v-for="n in 3" :key="n" class="card p-6 animate-pulse">
-            <div class="h-4 bg-gray-300 rounded w-3/4 mb-4"></div>
-            <div class="h-4 bg-gray-300 rounded w-1/2"></div>
+            <div class="h-4 bg-slate-800 rounded w-3/4 mb-4"></div>
+            <div class="h-4 bg-slate-800 rounded w-1/2"></div>
           </div>
         </div>
 
         <div v-else-if="bookings.length === 0" class="card p-12 text-center">
-          <svg class="mx-auto h-24 w-24 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="mx-auto h-24 w-24 text-slate-500 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
           </svg>
-          <h3 class="text-lg font-medium text-gray-900 mb-2">No bookings yet</h3>
-          <p class="text-gray-500 mb-6">Start browsing houses and book your first viewing</p>
+          <h3 class="text-lg font-medium text-slate-100 mb-2">No bookings yet</h3>
+          <p class="text-slate-400 mb-6">Start browsing houses and book your first viewing</p>
           <router-link to="/" class="btn-primary inline-block">
             Browse Houses
           </router-link>
@@ -115,7 +115,7 @@
             <div class="flex flex-col md:flex-row md:items-center md:justify-between">
               <div class="flex-1">
                 <div class="flex items-center gap-3 mb-2">
-                  <h3 class="text-lg font-semibold text-gray-900">{{ booking.houseTitle }}</h3>
+                  <h3 class="text-lg font-semibold text-slate-100">{{ booking.houseTitle }}</h3>
                   <span 
                     :class="[
                       'px-3 py-1 rounded-full text-xs font-semibold',
@@ -128,7 +128,7 @@
                     {{ booking.status.charAt(0).toUpperCase() + booking.status.slice(1) }}
                   </span>
                 </div>
-                <div class="space-y-1 text-sm text-gray-600">
+                <div class="space-y-1 text-sm text-slate-400">
                   <p class="flex items-center">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
@@ -166,11 +166,11 @@
       <!-- Saved Houses Tab -->
       <div v-if="activeTab === 'saved'">
         <div v-if="savedHouses.length === 0" class="card p-12 text-center">
-          <svg class="mx-auto h-24 w-24 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="mx-auto h-24 w-24 text-slate-500 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
           </svg>
-          <h3 class="text-lg font-medium text-gray-900 mb-2">No saved houses</h3>
-          <p class="text-gray-500 mb-6">Save houses you're interested in for quick access later</p>
+          <h3 class="text-lg font-medium text-slate-100 mb-2">No saved houses</h3>
+          <p class="text-slate-400 mb-6">Save houses you're interested in for quick access later</p>
           <router-link to="/" class="btn-primary inline-block">
             Browse Houses
           </router-link>
@@ -194,8 +194,8 @@
               </div>
             </div>
             <div class="p-4">
-              <h3 class="text-lg font-semibold text-gray-900 mb-2">{{ house.title }}</h3>
-              <p class="text-sm text-gray-600">{{ house.location }}</p>
+              <h3 class="text-lg font-semibold text-slate-100 mb-2">{{ house.title }}</h3>
+              <p class="text-sm text-slate-400">{{ house.location }}</p>
             </div>
           </div>
         </div>
