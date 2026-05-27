@@ -578,8 +578,8 @@
             <div>
               <label class="block text-sm font-medium text-slate-300 mb-2">Status</label>
               <select v-model="newHouse.status" class="input-field">
-                <option value="Available">Available</option>
-                <option value="Occupied">Occupied</option>
+                <option value="free">Free</option>
+                <option value="taken">Taken</option>
               </select>
             </div>
 

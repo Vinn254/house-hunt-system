@@ -74,7 +74,7 @@
                   'bg-red-100 text-red-800': house.status === 'taken'
                 }"
               >
-                {{ house.status ? house.status.charAt(0).toUpperCase() + house.status.slice(1) : 'Available' }}
+                {{ house.status ? house.status.charAt(0).toUpperCase() + house.status.slice(1) : 'Free' }}
               </span>
             </div>
             
@@ -450,7 +450,7 @@ const submitBooking = async () => {
     alert('Booking submitted successfully! You will be redirected to WhatsApp to chat with our agent.');
     
     // Redirect to WhatsApp after booking with detailed message
-    const whatsappNumber = '+254705723811';
+    const whatsappNumber = '+254758413152';
     const message = `Hello! I've successfully booked a viewing for ${house.value.title} (KSh ${house.value.rent.toLocaleString()}/month) on ${bookingData.value.date} at ${bookingData.value.time}. My phone number is ${bookingData.value.phoneNumber}. Please confirm the exact location and viewing details. Thank you!`;
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${whatsappNumber.replace('+', '')}?text=${encodedMessage}`;

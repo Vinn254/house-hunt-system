@@ -1,7 +1,7 @@
 <template>
   <div class="fixed bottom-6 right-6 z-50">
     <a
-      href="https://wa.me/254705723811?text=Hello%2C%20I%27m%20interested%20in%20finding%20a%20house"
+      href="https://wa.me/254758413152?text=Hello%2C%20I%27m%20interested%20in%20finding%20a%20house"
       target="_blank"
       rel="noopener noreferrer"
       class="flex items-center justify-center w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110"
