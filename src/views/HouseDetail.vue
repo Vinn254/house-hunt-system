@@ -207,15 +207,16 @@
 
                <div>
                  <label class="block text-sm font-medium text-slate-300 mb-2">Preferred Time</label>
-                 <select v-model="bookingData.time" required class="input-field">
-                   <option value="">Select time</option>
-                   <option value="09:00">9:00 AM</option>
-                   <option value="10:00">10:00 AM</option>
-                   <option value="11:00">11:00 AM</option>
-                   <option value="14:00">2:00 PM</option>
-                   <option value="15:00">3:00 PM</option>
-                   <option value="16:00">4:00 PM</option>
-                 </select>
+                 <input
+                   v-model="bookingData.time"
+                   type="time"
+                   min="08:00"
+                   max="17:00"
+                   step="900"
+                   required
+                   class="input-field"
+                 />
+                 <p class="text-xs text-slate-400 mt-1">Choose any time between 08:00 and 17:00</p>
                </div>
 
                <div>
